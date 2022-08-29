@@ -1,0 +1,5 @@
+name: SmidgeThing
+version: ${project.version}
+main: com.hicupalot.SmidgeThing
+api-version: 1.19
+authors: [hicupalot]
