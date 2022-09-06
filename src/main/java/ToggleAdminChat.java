@@ -10,29 +10,30 @@ import java.util.UUID;
 public class ToggleAdminChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        String message = args[1];
         if (!(sender instanceof Player)) {
             sender.sendMessage("You may not do this!");
             return false;
         }
         if (!sender.hasPermission("smidge.adminChat")) {
             sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();
         if (args.length == 0) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.GOLD + "ENABLED");
+                return true;
             } else Config.adminToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ChatColor.RED + "DISABLED");
-            return false;
+            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.RED + "DISABLED");
+            return true;
         }
-        if (args.length == 1) {
-            Bukkit.broadcast(ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ((Player) sender).getDisplayName() + ": " + message, "smidge.staffChat");
-        }
-        if (args.length > 1) {
-            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] "+ ChatColor.DARK_RED + "Invalid Arguments, correct usage /sc (message)");
+            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ((Player) sender).getDisplayName() + ": ";
+            for (String s : args){
+                message = message+s+" ";
 
+            Bukkit.broadcast(message, "smidge.staffChat");
+            return true;
         }
         return false;
     }

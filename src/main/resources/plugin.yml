@@ -1,6 +1,6 @@
 name: SmidgeThing
 version: ${project.version}
-main: com.hicupalot.SmidgeThing
+main: SmidgeThing
 api-version: 1.19
 authors: [hicupalot]
 
@@ -9,16 +9,24 @@ commands:
     description: Toggle/Speak the Admin Chat
     usage: /ac
     permission: smidge.adminChat
-    aliases: adminchat
+    aliases: [adminchat, ac]
   ToggleStaffChat:
     description: Toggle/Speak the Staff Chat
     usage: /sc
     permission: smidge.staffChat
-    aliases: staffchat
+    aliases: [staffchat, sc]
+    ToggleStreamerChat:
+      description: Toggle/Speak in Streamer Chat
+      usage: /streamchat
+      permission: smidge.streamerChat
+      aliases: [streamchat, streamerchat]
   permissions:
     smidge.staffChat:
-      descritpion: 'Allows you to Speak in Staff Chat'
+      descritpion: 'Allows you to speak in Staff Chat'
       default: op
     smidge.adminChat:
-      descritpion: 'Allows you to Speak in Admin Chat'
+      descritpion: 'Allows you to speak in Admin Chat'
       default: op
+    smidge.streamerChat:
+     description: 'Allows you to speak in Streamer Chat'
+     default: op

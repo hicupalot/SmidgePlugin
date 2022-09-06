@@ -10,29 +10,29 @@ import java.util.UUID;
 public class ToggleStaffChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        String message = args[1];
         if (!(sender instanceof Player)) {
             sender.sendMessage("You may not do this!");
             return false;
         }
         if (!sender.hasPermission("smidge.staffChat")) {
             sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();
         if (args.length == 0) {
             if (!Config.staffToggle.containsKey(playerUUID)) {
                 Config.staffToggle.put(playerUUID, true);
                 sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.GOLD + "ENABLED");
+                return true;
             } else Config.staffToggle.remove(playerUUID);
             sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.RED + "DISABLED");
-            return false;
+            return true;
         }
-        if (args.length == 1) {
-            Bukkit.broadcast(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] " + ((Player) sender).getDisplayName() + ": " + message, "smidge.staffChat");
-        }
-        if (args.length > 1) {
-            sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] " + ChatColor.DARK_RED + "Invalid Arguments, correct usage /sc (message)");
-
+        String message = ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] " + ((Player) sender).getDisplayName() + ": " + ChatColor.GREEN;
+        for (String s : args){
+            message = message+s+" ";
+            Bukkit.broadcast(message, "smidge.staffChat");
+            return true;
         }
         return false;
     }

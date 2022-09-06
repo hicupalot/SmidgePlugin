@@ -7,17 +7,16 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.UUID;
 
-public class AdminChat implements Listener {
+public class StreamerChat implements Listener {
     @SuppressWarnings("deprecated")
     @EventHandler
-    public void onAdminSpeak(AsyncPlayerChatEvent e){
+    public void onStreamerSpeak(AsyncPlayerChatEvent e){
         Player player = e.getPlayer();
         UUID playerUUID = e.getPlayer().getUniqueId();
         String chatMessage = e.getMessage();
-        if (Config.adminToggle.containsKey(playerUUID)){
-            Bukkit.broadcast(ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] "+ player.getDisplayName() +": " + chatMessage, "smidge.adminChat");
-       e.setCancelled(true);
+        if (Config.streamerToggle.containsKey(playerUUID)){
+            Bukkit.broadcast(ChatColor.RED+"["+ChatColor.BLUE+"STREAMER"+ChatColor.RED+"] "+ player.getDisplayName() +": " + chatMessage, "smidge.streamerChat");
+            e.setCancelled(true);
         }
     }
 }
-
