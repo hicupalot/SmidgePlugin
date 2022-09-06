@@ -3,3 +3,22 @@ version: ${project.version}
 main: com.hicupalot.SmidgeThing
 api-version: 1.19
 authors: [hicupalot]
+
+commands:
+  ToggleAdminChat:
+    description: Toggle/Speak the Admin Chat
+    usage: /ac
+    permission: smidge.adminChat
+    aliases: adminchat
+  ToggleStaffChat:
+    description: Toggle/Speak the Staff Chat
+    usage: /sc
+    permission: smidge.staffChat
+    aliases: staffchat
+  permissions:
+    smidge.staffChat:
+      descritpion: 'Allows you to Speak in Staff Chat'
+      default: op
+    smidge.adminChat:
+      descritpion: 'Allows you to Speak in Admin Chat'
+      default: op
