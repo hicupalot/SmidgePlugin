@@ -19,7 +19,7 @@ public class ToggleStaffChat implements CommandExecutor {
             return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();
-        if (args.length == 0) {
+        if (args.length < 1) {
             if (!Config.staffToggle.containsKey(playerUUID)) {
                 Config.staffToggle.put(playerUUID, true);
                 sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.GOLD + "ENABLED");
@@ -29,11 +29,10 @@ public class ToggleStaffChat implements CommandExecutor {
             return true;
         }
         String message = ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] " + ((Player) sender).getDisplayName() + ": " + ChatColor.GREEN;
-        for (String s : args){
-            message = message+s+" ";
-            Bukkit.broadcast(message, "smidge.staffChat");
-            return true;
+        for (String s : args) {
+            message = message + s + " ";
         }
-        return false;
+        Bukkit.broadcast(message, "smidge.staffChat");
+        return true;
     }
 }

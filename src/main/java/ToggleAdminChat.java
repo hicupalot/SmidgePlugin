@@ -19,7 +19,7 @@ public class ToggleAdminChat implements CommandExecutor {
             return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();
-        if (args.length == 0) {
+        if (args.length <1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
                 sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.GOLD + "ENABLED");
@@ -28,13 +28,11 @@ public class ToggleAdminChat implements CommandExecutor {
             sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.RED + "DISABLED");
             return true;
         }
-            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ((Player) sender).getDisplayName() + ": ";
-            for (String s : args){
-                message = message+s+" ";
-
+            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ((Player) sender).getDisplayName() + ": "+ChatColor.BLUE;
+            for (String s : args) {
+                message = message + s + " ";
+            }
             Bukkit.broadcast(message, "smidge.staffChat");
-            return true;
-        }
-        return false;
+        return true;
     }
 }
