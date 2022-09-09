@@ -15,11 +15,11 @@ commands:
     usage: /sc
     permission: smidge.staffChat
     aliases: [staffchat, sc]
-    ToggleStreamerChat:
-      description: Toggle/Speak in Streamer Chat
-      usage: /streamchat
-      permission: smidge.streamerChat
-      aliases: [streamchat, streamerchat]
+  ToggleStreamerChat:
+    description: Toggle/Speak in Streamer Chat
+    usage: /streamchat
+    permission: smidge.streamerChat
+    aliases: [streamchat, streamerchat]
   permissions:
     smidge.staffChat:
       descritpion: 'Allows you to speak in Staff Chat'

@@ -15,7 +15,8 @@ public class StaffChat implements Listener {
         UUID playerUUID = e.getPlayer().getUniqueId();
         String chatMessage = e.getMessage();
         if (Config.staffToggle.containsKey(playerUUID)){
-            Bukkit.broadcast(ChatColor.RED+"["+ChatColor.YELLOW+"STAFF"+ChatColor.RED+"] "+  player.getDisplayName() +": " + ChatColor.GREEN+chatMessage, "smidge.staffChat");
+            Bukkit.broadcast(ChatColor.RED+"["+ChatColor.YELLOW+"STAFF"+ChatColor.RED+"] "
+                    +  player.getDisplayName() +": " + ChatColor.GREEN+chatMessage, "smidge.staffChat");
             e.setCancelled(true);
         }
     }

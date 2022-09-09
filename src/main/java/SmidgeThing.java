@@ -11,7 +11,7 @@ public final class SmidgeThing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new StreamerChat(),this);
         getCommand("ToggleAdminChat").setExecutor(new ToggleAdminChat());
         getCommand("ToggleStaffChat").setExecutor(new ToggleStaffChat());
-     //   getCommand("ToggleStreamerChat").setExecutor(new ToggleStreamerChat());
+        getCommand("ToggleStreamerChat").setExecutor(new ToggleStreamerChat());
     }
     @Override
     public void onDisable() {

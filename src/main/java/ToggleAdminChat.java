@@ -28,11 +28,12 @@ public class ToggleAdminChat implements CommandExecutor {
             sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.RED + "DISABLED");
             return true;
         }
-            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] " + ((Player) sender).getDisplayName() + ": "+ChatColor.BLUE;
+            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] "
+                    + ((Player) sender).getDisplayName() + ": "+ChatColor.BLUE;
             for (String s : args) {
                 message = message + s + " ";
             }
-            Bukkit.broadcast(message, "smidge.staffChat");
+            Bukkit.broadcast(message, "smidge.adminChat");
         return true;
     }
 }

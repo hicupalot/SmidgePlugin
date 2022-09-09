@@ -28,7 +28,8 @@ public class ToggleStaffChat implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.RED + "DISABLED");
             return true;
         }
-        String message = ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] " + ((Player) sender).getDisplayName() + ": " + ChatColor.GREEN;
+        String message = ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] "
+                + ((Player) sender).getDisplayName() + ": " + ChatColor.GREEN;
         for (String s : args) {
             message = message + s + " ";
         }
