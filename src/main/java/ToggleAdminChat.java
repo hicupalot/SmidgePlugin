@@ -22,10 +22,12 @@ public class ToggleAdminChat implements CommandExecutor {
         if (args.length <1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] "
+                        + ChatColor.GOLD + "ENABLED");
                 return true;
             } else Config.adminToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] " + ChatColor.RED + "DISABLED");
+            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] "
+                    + ChatColor.RED + "DISABLED");
             return true;
         }
             String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] "

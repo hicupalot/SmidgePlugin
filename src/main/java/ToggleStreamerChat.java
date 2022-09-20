@@ -22,13 +22,16 @@ public class ToggleStreamerChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.streamerToggle.containsKey(playerUUID)) {
                 Config.streamerToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT" + ChatColor.YELLOW + "] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT" + ChatColor.YELLOW + "] "
+                        + ChatColor.GOLD + "ENABLED");
                 return true;
             } else Config.streamerToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT" + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
+            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT"
+                    + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
             return true;
         }
-        String message = ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] " + ChatColor.GOLD+((Player) sender).getDisplayName() + ": " + ChatColor.LIGHT_PURPLE;
+        String message = ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] "
+                + ChatColor.GOLD+((Player) sender).getDisplayName() + ": " + ChatColor.LIGHT_PURPLE;
         for (String s : args) {
             message = message + s + " ";
         }

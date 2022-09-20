@@ -22,10 +22,12 @@ public class ToggleStaffChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.staffToggle.containsKey(playerUUID)) {
                 Config.staffToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] "
+                        + ChatColor.GOLD + "ENABLED");
                 return true;
             } else Config.staffToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.RED + "DISABLED");
+            sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] "
+                    + ChatColor.RED + "DISABLED");
             return true;
         }
         String message = ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] "
