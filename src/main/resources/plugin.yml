@@ -20,6 +20,11 @@ commands:
     usage: /streamchat
     permission: smidge.streamerChat
     aliases: [streamchat, streamerchat]
+  Follower:
+    description: Monitor a Player
+    usage: /spy (username)
+    permission: smidge.spy
+    aliases: [investigate, monitor]
   permissions:
     smidge.staffChat:
       descritpion: 'Allows you to speak in Staff Chat'
@@ -30,3 +35,9 @@ commands:
     smidge.streamerChat:
      description: 'Allows you to speak in Streamer Chat'
      default: op
+    smidge.spy:
+      description: 'Allows you to monitor other users'
+      default: op
+
+
+

@@ -8,11 +8,16 @@ import org.bukkit.inventory.EquipmentSlot;
 public class PetDeathPreventer implements Listener {
     @EventHandler
     public void onPetHurt(EntityDamageByEntityEvent e) {
-        if (!e.getEntity().getType().equals(EntityType.PLAYER) || e.getEntity().getType().equals(EntityType.ARMOR_STAND))
-        if (e.getEntity().getCustomName() != null) {
-            if (!((Player) e.getDamager()).getInventory().getItem(EquipmentSlot.HAND)
-                    .getItemMeta().getDisplayName().equals("PETKILLER")) {
-                e.setCancelled(true);
+        Player damagingPlayer= (((Player)e.getDamager()));
+        if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
+            if (e.getEntity().getCustomName() != null) {
+                if (damagingPlayer.getInventory().getItemInMainHand()==null){
+                    return;
+                }
+                if (!damagingPlayer.getInventory().getItem(EquipmentSlot.HAND)
+                        .getItemMeta().getDisplayName().equals("PETKILLER")){
+                    e.setCancelled(true);
+                }
             }
         }
     }
