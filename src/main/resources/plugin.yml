@@ -3,7 +3,7 @@ version: ${project.version}
 main: SmidgeThing
 api-version: 1.19
 authors: [hicupalot]
-
+depend: [SuperVanish]
 commands:
   ToggleAdminChat:
     description: Toggle/Speak the Admin Chat
@@ -22,9 +22,14 @@ commands:
     aliases: [streamchat, streamerchat]
   Follower:
     description: Monitor a Player
-    usage: /spy (username)
+    usage: /spy
     permission: smidge.spy
-    aliases: [investigate, monitor]
+    aliases: [investigate, monitor, spy]
+  TogglepetKiller:
+    description: Toggle Pet Killing
+    usage: /petkilltoggle
+    permission: smidge.petKiller
+    aliases: [petkill, killpet]
   permissions:
     smidge.staffChat:
       descritpion: 'Allows you to speak in Staff Chat'
@@ -38,6 +43,8 @@ commands:
     smidge.spy:
       description: 'Allows you to monitor other users'
       default: op
-
+    smidge.petKiller:
+      description: 'Allows you to toggle killing pets'
+      default: op
 
 

@@ -9,11 +9,12 @@ public final class SmidgeThing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AdminChat(),this);
         getServer().getPluginManager().registerEvents(new StaffChat(),this);
         getServer().getPluginManager().registerEvents(new StreamerChat(),this);
-        //getServer().getPluginManager().registerEvents(new PetDeathPreventer(),this);
+        getServer().getPluginManager().registerEvents(new PetDeathPreventer(),this);
         getCommand("ToggleAdminChat").setExecutor(new ToggleAdminChat());
         getCommand("ToggleStaffChat").setExecutor(new ToggleStaffChat());
         getCommand("ToggleStreamerChat").setExecutor(new ToggleStreamerChat());
-        getCommand("Follower").setExecutor(new ToggleStreamerChat());
+       // getCommand("Follower").setExecutor(new Follower());
+        getCommand("TogglePetKiller").setExecutor(new TogglePetKiller());
     }
     @Override
     public void onDisable() {
