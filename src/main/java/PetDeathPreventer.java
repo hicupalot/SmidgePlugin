@@ -3,6 +3,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 
@@ -12,9 +13,14 @@ public class PetDeathPreventer implements Listener {
     @EventHandler
     public void onPetHurt(EntityDamageByEntityEvent e) {
         UUID playerUUID = e.getDamager().getUniqueId();
-        if (!e.getDamager().getType().equals(EntityType.PLAYER)){
-            e.setCancelled(true);
-            return;
+        //Damager = Entity  Doing Damaging
+        //Entity = Entity being damaged
+        if (!e.getDamager().getType().equals(EntityType.PLAYER)
+                && !e.getEntity().getType().equals(EntityType.PLAYER)) {
+            if (e.getEntity().getCustomName() != null) {
+                e.setCancelled(true);
+                return;
+            }
         }
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
             if (e.getEntity().getCustomName() != null) {
@@ -24,8 +30,9 @@ public class PetDeathPreventer implements Listener {
             }
         }
     }
+
     @EventHandler
-    public void onPetLeave(PlayerQuitEvent e){
+    public void onPetLeave(PlayerQuitEvent e) {
         UUID playerUUID = e.getPlayer().getUniqueId();
         Config.petDeathToggle.remove(playerUUID);
     }
