@@ -30,6 +30,11 @@ commands:
     usage: /petkilltoggle
     permission: smidge.petKiller
     aliases: [petkill, killpet]
+  clearchat:
+    description: Clears the chat
+    usage: /clearchat
+    permission: smidge.clearchat
+    aliases: [chatclear, cc]
   permissions:
     smidge.staffChat:
       descritpion: 'Allows you to speak in Staff Chat'

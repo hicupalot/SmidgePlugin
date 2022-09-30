@@ -7,8 +7,9 @@ public class EndDisable implements Listener {
     @EventHandler
     public void onPortal(PlayerPortalEvent event) {
         if (event.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL) {
-            event.setCancelled(true);
+                event.setCancelled(true);
+            }
         }
     }
-}
+
 

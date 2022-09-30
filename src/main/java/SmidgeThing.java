@@ -15,6 +15,7 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("ToggleStreamerChat").setExecutor(new ToggleStreamerChat());
         //getCommand("Follower").setExecutor(new Follower());
         getCommand("TogglePetKiller").setExecutor(new TogglePetKiller());
+        getCommand("clearchat").setExecutor(new clearchat());
     }
     @Override
     public void onDisable() {
