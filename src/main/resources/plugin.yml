@@ -51,5 +51,8 @@ commands:
     smidge.petKiller:
       description: 'Allows you to toggle killing pets'
       default: op
+    smidge.clearchat:
+      description: 'Allows you to clear chat'
+      default: op
 
 
