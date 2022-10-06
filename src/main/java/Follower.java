@@ -21,7 +21,7 @@ public class Follower implements CommandExecutor {
         String username = args[0];
         Player target = Bukkit.getPlayer(args[0]);
 
-        if (args.length < 1) {
+        if (args.length <0) {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /spy (player)");
             return false;
         }

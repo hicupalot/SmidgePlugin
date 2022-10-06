@@ -15,9 +15,10 @@ public class StreamerChat implements Listener {
         Player player = e.getPlayer();
         UUID playerUUID = e.getPlayer().getUniqueId();
         String chatMessage = e.getMessage();
+        String colorMessage = ChatColor.translateAlternateColorCodes('&', chatMessage);
         if (Config.streamerToggle.containsKey(playerUUID)) {
             Bukkit.broadcast(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] "
-                    + ChatColor.GOLD + player.getDisplayName() + ": " + ChatColor.LIGHT_PURPLE + chatMessage, "smidge.streamerChat");
+                    + ChatColor.GOLD + player.getDisplayName() + ": " + ChatColor.LIGHT_PURPLE + colorMessage, "smidge.streamerChat");
             e.setCancelled(true);
         }
     }

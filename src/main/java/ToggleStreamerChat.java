@@ -44,11 +44,13 @@ public class ToggleStreamerChat implements CommandExecutor {
             return true;
         }
         String message = ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] "
-                + ChatColor.GOLD+((Player) sender).getDisplayName() + ": " + ChatColor.LIGHT_PURPLE;
+                + ChatColor.GOLD + ((Player) sender).getDisplayName() + ": " + ChatColor.LIGHT_PURPLE;
         for (String s : args) {
             message = message + s + " ";
+            String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
+            Bukkit.broadcast(colorMessage, "smidge.streamerChat");
+            return true;
         }
-        Bukkit.broadcast(message, "smidge.streamerChat");
-        return true;
+  return true;
     }
 }

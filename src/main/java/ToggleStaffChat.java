@@ -31,7 +31,7 @@ public class ToggleStaffChat implements CommandExecutor {
                             + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
                 }
                 //------------------------------------------------------------------------------------------------//
-               if (Config.adminToggle.containsKey(playerUUID)){
+                if (Config.adminToggle.containsKey(playerUUID)) {
                     Config.adminToggle.remove(playerUUID);
                     sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
                             + ChatColor.RED + "DISABLED");
@@ -47,8 +47,9 @@ public class ToggleStaffChat implements CommandExecutor {
                 + ((Player) sender).getDisplayName() + ": " + ChatColor.GREEN;
         for (String s : args) {
             message = message + s + " ";
-        }
-        Bukkit.broadcast(message, "smidge.staffChat");
+            String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
+            Bukkit.broadcast(colorMessage, "smidge.staffChat");
+    }
         return true;
     }
 }

@@ -19,10 +19,10 @@ public class ToggleAdminChat implements CommandExecutor {
             return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();
-        if (args.length <1) {
+        if (args.length < 1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] "
+                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
                         + ChatColor.GOLD + "ENABLED");
                 //-----------------------------------------------------------------------------------------//
                 if (Config.streamerToggle.containsKey(playerUUID)) {
@@ -39,16 +39,18 @@ public class ToggleAdminChat implements CommandExecutor {
                 //---------------------------------------------------------------------------------------------//
                 return true;
             } else Config.adminToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW+"["+ChatColor.RED+"ADMINCHAT"+ChatColor.YELLOW+"] "
+            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
                     + ChatColor.RED + "DISABLED");
             return true;
         }
-            String message = ChatColor.YELLOW+"["+ChatColor.RED+"ADMIN"+ChatColor.YELLOW+"] "
-                    + ((Player) sender).getDisplayName() + ": "+ChatColor.BLUE;
-            for (String s : args) {
-                message = message + s + " ";
-            }
-            Bukkit.broadcast(message, "smidge.adminChat");
-        return true;
+        String message = ChatColor.YELLOW + "[" + ChatColor.RED + "ADMIN" + ChatColor.YELLOW + "] "
+                + ((Player) sender).getDisplayName() + ": " + ChatColor.YELLOW;
+        for (String s : args) {
+            message = message + s + " ";
+            String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
+            Bukkit.broadcast(colorMessage, "smidge.adminChat");
+            return true;
+        }
+    return true;
     }
 }
