@@ -22,7 +22,7 @@ commands:
     aliases: [streamchat, streamerchat]
   Follower:
     description: Monitor a Player
-    usage: /spy
+    usage: /follower
     permission: smidge.spy
     aliases: [investigate, monitor, spy]
   TogglepetKiller:

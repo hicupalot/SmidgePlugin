@@ -25,15 +25,15 @@ public class ToggleStreamerChat implements CommandExecutor {
                 sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT" + ChatColor.YELLOW + "] "
                         + ChatColor.GOLD + "ENABLED");
                 //----------------------------------------------------------------------------------------------------//
-                if (Config.adminToggle.containsKey(playerUUID)) {
-                    Config.adminToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
+                if (Config.streamerToggle.containsKey(playerUUID)) {
+                    Config.streamerToggle.remove(playerUUID);
+                    sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "STREAMERCHAT" + ChatColor.YELLOW + "] "
                             + ChatColor.RED + "DISABLED");
                 }
                 //---------------------------------------------------------------------------------------------------//
-                if (Config.staffToggle.containsKey(playerUUID)) {
-                    Config.staffToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] "
+                if (Config.streamerToggle.containsKey(playerUUID)) {
+                    Config.streamerToggle.remove(playerUUID);
+                    sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STREAMERCHAT" + ChatColor.RED + "] "
                             + ChatColor.RED + "DISABLED");
                 }
                 //---------------------------------------------------------------------------------------------------//
