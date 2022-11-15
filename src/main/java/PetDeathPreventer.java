@@ -1,3 +1,4 @@
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -23,6 +24,7 @@ public class PetDeathPreventer implements Listener {
             }
         }
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
+         //   Bukkit.broadcastMessage(e.getCause().toString());
             if (e.getEntity().getCustomName() != null) {
                 if (!Config.petDeathToggle.containsKey(playerUUID)) {
                     e.setCancelled(true);
@@ -42,6 +44,7 @@ public class PetDeathPreventer implements Listener {
             }
         }
     }
+
     @EventHandler
     public void onPetCrunchOrSquash(EntityDamageEvent e) {
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
@@ -55,6 +58,7 @@ public class PetDeathPreventer implements Listener {
             }
         }
     }
+
     //DISABLE THE HASHMAP CASES
     @EventHandler
     public void onPetLeave(PlayerQuitEvent e) {
@@ -62,12 +66,4 @@ public class PetDeathPreventer implements Listener {
         Config.petDeathToggle.remove(playerUUID);
     }
 
-    @EventHandler
-    public void onPetTeleport(PlayerTeleportEvent e) {
-        UUID playerUUID = e.getPlayer().getUniqueId();
-        Config.petDeathToggle.remove(playerUUID);
-        e.getPlayer().sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "PETKILLING" + ChatColor.YELLOW + "] "
-                + ChatColor.RED + "DISABLED");
-
-    }
 }
