@@ -20,11 +20,11 @@ commands:
     usage: /streamchat
     permission: smidge.streamerChat
     aliases: [streamchat, streamerchat]
-  Follower:
-    description: Monitor a Player
-    usage: /follower
-    permission: smidge.spy
-    aliases: [investigate, monitor, spy]
+ # Follower:
+ #   description: Monitor a Player
+ #   usage: /follower
+ #   permission: smidge.spy
+ #   aliases: [investigate, monitor, spy]
   TogglepetKiller:
     description: Toggle Pet Killing
     usage: /petkilltoggle

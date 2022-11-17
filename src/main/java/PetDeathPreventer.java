@@ -1,12 +1,9 @@
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.UUID;
 
@@ -24,7 +21,7 @@ public class PetDeathPreventer implements Listener {
             }
         }
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
-         //   Bukkit.broadcastMessage(e.getCause().toString());
+         //Debug   Bukkit.broadcastMessage(e.getCause().toString());
             if (e.getEntity().getCustomName() != null) {
                 if (!Config.petDeathToggle.containsKey(playerUUID)) {
                     e.setCancelled(true);
@@ -38,7 +35,7 @@ public class PetDeathPreventer implements Listener {
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
             if (e.getEntity().getCustomName() != null) {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.LAVA) || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)) {
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK) || e.getCause().equals(EntityDamageEvent.DamageCause.HOT_FLOOR)) {
                     e.setCancelled(true);
                 }
             }
@@ -50,9 +47,9 @@ public class PetDeathPreventer implements Listener {
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
             if (e.getEntity().getCustomName() != null) {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL) || e.getCause().equals(EntityDamageEvent.DamageCause.FALLING_BLOCK)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.HOT_FLOOR) || e.getCause().equals(EntityDamageEvent.DamageCause.CRAMMING)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.THORNS) || e.getCause().equals(EntityDamageEvent.DamageCause.SONIC_BOOM)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) || e.getCause().equals(EntityDamageEvent.DamageCause.MELTING)) {
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.CRAMMING) || e.getCause().equals(EntityDamageEvent.DamageCause.THORNS)
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.SONIC_BOOM) || e.getCause().equals(EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.MELTING)) {
                     e.setCancelled(true);
                 }
             }
