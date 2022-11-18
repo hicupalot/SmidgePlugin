@@ -35,6 +35,19 @@ commands:
     usage: /clearchat
     permission: smidge.clearchat
     aliases: [chatclear, cc]
+  mutechat:
+    description: Mutes the Chat
+    usage: /mutechat
+    permission: smidge.staff
+    aliases: [chatmute, mc, silence]
+  kickall:
+    description: Kicks all players
+    usage: /kickall
+    permission: smidge.staff
+  maintenancetoggle:
+    description: Toggles Maintenance Mode
+    usage: /maintenance
+    permission: smidge.maintenancetoggle
   permissions:
     smidge.staffChat:
       descritpion: 'Allows you to speak in Staff Chat'
@@ -53,6 +66,15 @@ commands:
       default: op
     smidge.clearchat:
       description: 'Allows you to clear chat'
+      default: op
+    smidge.staff:
+      description: 'Default Staff Permission Where Extra Perms Not Needed'
+      default: op
+    smidge.maintenancetoggle:
+      description: 'Toggles Maintenance Mode'
+      default: op
+    smidge.maintenance:
+      description: 'Join During Maintenance'
       default: op
 
 

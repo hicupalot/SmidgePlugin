@@ -6,21 +6,28 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-public class clearchat implements CommandExecutor {
+public class maintenancetoggle implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
             sender.sendMessage("You may not do this!");
             return false;
         }
-        if (!sender.hasPermission("smidge.clearchat")) {
+        if (!sender.hasPermission("smidge.maintenancetoggle")) {
             sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
             return false;
         }
-        for(int i=0; i<200; i++) {
-            Bukkit.broadcastMessage("");
+        if (Config.maintenaceToggle.isEmpty()) {
+            Config.maintenaceToggle.put(((Player) sender).getUniqueId(), true);
+            String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Enabled");
+            Bukkit.broadcastMessage(maintenanceMessage);
         }
-        String broadCast = ChatColor.translateAlternateColorCodes('&', "&c[&eSTAFF&c] &eChat was cleared by " + sender.getName());
-        return true;
+        else{
+            Config.maintenaceToggle.clear();
+            String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Disabled");
+            Bukkit.broadcastMessage(maintenanceMessage);
+        }
+    return true;
     }
 }
+
