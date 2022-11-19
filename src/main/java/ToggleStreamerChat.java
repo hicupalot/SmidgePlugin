@@ -14,7 +14,7 @@ public class ToggleStreamerChat implements CommandExecutor {
             sender.sendMessage("You may not do this!");
             return false;
         }
-        if (!sender.hasPermission("smidge.streamerChat")) {
+        if (!sender.hasPermission("smidge.streamer")) {
             sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
             return false;
         }

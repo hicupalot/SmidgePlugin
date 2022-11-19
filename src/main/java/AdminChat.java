@@ -18,7 +18,7 @@ public class AdminChat implements Listener {
         if (Config.adminToggle.containsKey(playerUUID)) {
         String colorMessage = ChatColor.translateAlternateColorCodes('&', chatMessage);
             Bukkit.broadcast(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMIN" + ChatColor.YELLOW + "] "
-                    + player.getDisplayName() + ": " + ChatColor.YELLOW+ colorMessage, "smidge.adminChat");
+                    + player.getDisplayName() + ": " + ChatColor.YELLOW+ colorMessage, "smidge.admin");
             e.setCancelled(true);
         }
     }

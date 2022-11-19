@@ -8,17 +8,17 @@ commands:
   ToggleAdminChat:
     description: Toggle/Speak the Admin Chat
     usage: /ac
-    permission: smidge.adminChat
+    permission: smidge.admin
     aliases: [adminchat, ac]
   ToggleStaffChat:
     description: Toggle/Speak the Staff Chat
     usage: /sc
-    permission: smidge.staffChat
+    permission: smidge.staff
     aliases: [staffchat, sc]
   ToggleStreamerChat:
     description: Toggle/Speak in Streamer Chat
     usage: /streamchat
-    permission: smidge.streamerChat
+    permission: smidge.streamer
     aliases: [streamchat, streamerchat]
  # Follower:
  #   description: Monitor a Player
@@ -28,12 +28,12 @@ commands:
   TogglepetKiller:
     description: Toggle Pet Killing
     usage: /petkilltoggle
-    permission: smidge.petKiller
+    permission: smidge.staff
     aliases: [petkill, killpet]
   clearchat:
     description: Clears the chat
     usage: /clearchat
-    permission: smidge.clearchat
+    permission: smidge.staff
     aliases: [chatclear, cc]
   mutechat:
     description: Mutes the Chat
@@ -47,31 +47,23 @@ commands:
   maintenancetoggle:
     description: Toggles Maintenance Mode
     usage: /maintenance
-    permission: smidge.maintenancetoggle
+    permission: smidge.admin
+  DebugWeapon:
+    description: Gives you a debug weapon
+    usage: /debugweapon
+    permission: smidge.admin
   permissions:
-    smidge.staffChat:
-      descritpion: 'Allows you to speak in Staff Chat'
+    smidge.staff:
+      descritpion: 'Allows Access To Staff Commands'
       default: op
-    smidge.adminChat:
-      descritpion: 'Allows you to speak in Admin Chat'
+    smidge.admin:
+      descritpion: 'Allows access to Admin Commands'
       default: op
-    smidge.streamerChat:
-     description: 'Allows you to speak in Streamer Chat'
+    smidge.streamer:
+     description: 'Allows access to Streamer Commands'
      default: op
     smidge.spy:
       description: 'Allows you to monitor other users'
-      default: op
-    smidge.petKiller:
-      description: 'Allows you to toggle killing pets'
-      default: op
-    smidge.clearchat:
-      description: 'Allows you to clear chat'
-      default: op
-    smidge.staff:
-      description: 'Default Staff Permission Where Extra Perms Not Needed'
-      default: op
-    smidge.maintenancetoggle:
-      description: 'Toggles Maintenance Mode'
       default: op
     smidge.maintenance:
       description: 'Join During Maintenance'

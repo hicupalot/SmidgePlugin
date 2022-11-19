@@ -14,7 +14,7 @@ public class ToggleAdminChat implements CommandExecutor {
             sender.sendMessage("You may not do this!");
             return false;
         }
-        if (!sender.hasPermission("smidge.adminChat")) {
+        if (!sender.hasPermission("smidge.admin")) {
             sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
             return false;
         }

@@ -18,7 +18,7 @@ public class StaffChat implements Listener {
         if (Config.staffToggle.containsKey(playerUUID)) {
             String colorMessage = ChatColor.translateAlternateColorCodes('&', chatMessage);
             Bukkit.broadcast(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFF" + ChatColor.RED + "] "
-                    + player.getDisplayName() + ": " + ChatColor.GREEN + colorMessage, "smidge.staffChat");
+                    + player.getDisplayName() + ": " + ChatColor.GREEN + colorMessage, "smidge.staff");
             e.setCancelled(true);
         }
     }
