@@ -48,7 +48,7 @@ public class ToggleStaffChat implements CommandExecutor {
         for (String s : args) {
             message = message + s + " ";
             String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
-            Bukkit.broadcast(colorMessage, "smidge.staffChat");
+            Bukkit.broadcast(colorMessage, "smidge.staff");
     }
         return true;
     }
