@@ -11,11 +11,11 @@ public class ToggleStreamerChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("You may not do this!");
+            sender.sendMessage(Config.notPlayer);
             return false;
         }
         if (!sender.hasPermission("smidge.streamer")) {
-            sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            sender.sendMessage(Config.noPermission);
             return false;
         }
         UUID playerUUID = ((Player) sender).getUniqueId();

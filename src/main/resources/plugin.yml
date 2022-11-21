@@ -1,5 +1,5 @@
 name: SmidgeThing
-version: ${project.version}
+version: 1.2.5
 main: SmidgeThing
 api-version: 1.19
 authors: [hicupalot]
@@ -20,12 +20,12 @@ commands:
     usage: /streamchat
     permission: smidge.streamer
     aliases: [streamchat, streamerchat]
- # Follower:
- #   description: Monitor a Player
- #   usage: /follower
- #   permission: smidge.spy
- #   aliases: [investigate, monitor, spy]
-  TogglepetKiller:
+  follower:
+    description: Monitor a Player
+    usage: /follower
+    permission: smidge.staff
+    aliases: [investigate, monitor, spy]
+  TogglePetKiller:
     description: Toggle Pet Killing
     usage: /petkilltoggle
     permission: smidge.staff
@@ -48,10 +48,10 @@ commands:
     description: Toggles Maintenance Mode
     usage: /maintenance
     permission: smidge.admin
-  DebugWeapon:
-    description: Gives you a debug weapon
-    usage: /debugweapon
-    permission: smidge.admin
+  About:
+    description: Plugin Description
+    usage: /about
+    aliases: [plugininfo, didibreakit]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

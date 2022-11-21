@@ -18,12 +18,13 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("ToggleAdminChat").setExecutor(new ToggleAdminChat());
         getCommand("ToggleStaffChat").setExecutor(new ToggleStaffChat());
         getCommand("ToggleStreamerChat").setExecutor(new ToggleStreamerChat());
-     // getCommand("Follower").setExecutor(new Follower());
+        getCommand("follower").setExecutor(new Follower());
         getCommand("TogglePetKiller").setExecutor(new TogglePetKiller());
         getCommand("clearchat").setExecutor(new clearchat());
         getCommand("mutechat").setExecutor(new mutechat());
         getCommand("kickall").setExecutor(new kickall());
         getCommand("maintenancetoggle").setExecutor(new maintenancetoggle());
+        getCommand("About").setExecutor(new About());
     }
     @Override
     public void onDisable() {

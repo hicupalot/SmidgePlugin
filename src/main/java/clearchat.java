@@ -14,7 +14,7 @@ public class clearchat implements CommandExecutor {
             return false;
         }
         if (!sender.hasPermission("smidge.staff")) {
-            sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            sender.sendMessage(Config.noPermission);
             return false;
         }
         for(int i=0; i<200; i++) {

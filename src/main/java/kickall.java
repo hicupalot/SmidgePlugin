@@ -14,7 +14,7 @@ public class kickall implements CommandExecutor {
             return false;
         }
         if (!sender.hasPermission("smidge.staff")) {
-            sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            sender.sendMessage(Config.noPermission);
             return false;
         }
         int kickcount = 0;

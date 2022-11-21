@@ -3,20 +3,17 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-
-import java.io.Console;
 
 public class maintenancetoggle implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("You may not do this!");
+            sender.sendMessage(Config.notPlayer);
             return false;
         }
         if (!sender.hasPermission("smidge.admin")) {
-            sender.sendMessage(ChatColor.DARK_RED + "[Smidge] You do not have permission");
+            sender.sendMessage(Config.noPermission);
             return false;
         }
         if (Config.maintenaceToggle.isEmpty()) {
