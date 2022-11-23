@@ -2,55 +2,45 @@ name: SmidgeThing
 version: 1.2.5
 main: SmidgeThing
 api-version: 1.19
-authors: [hicupalot]
+author: hicupalot
 depend: [SuperVanish]
 commands:
   ToggleAdminChat:
     description: Toggle/Speak the Admin Chat
-    usage: /ac
     permission: smidge.admin
     aliases: [adminchat, ac]
   ToggleStaffChat:
     description: Toggle/Speak the Staff Chat
-    usage: /sc
     permission: smidge.staff
     aliases: [staffchat, sc]
   ToggleStreamerChat:
     description: Toggle/Speak in Streamer Chat
-    usage: /streamchat
     permission: smidge.streamer
     aliases: [streamchat, streamerchat]
   follower:
     description: Monitor a Player
-    usage: /follower
     permission: smidge.staff
     aliases: [investigate, monitor, spy]
   TogglePetKiller:
     description: Toggle Pet Killing
-    usage: /petkilltoggle
     permission: smidge.staff
     aliases: [petkill, killpet]
   clearchat:
     description: Clears the chat
-    usage: /clearchat
     permission: smidge.staff
     aliases: [chatclear, cc]
   mutechat:
     description: Mutes the Chat
-    usage: /mutechat
     permission: smidge.staff
     aliases: [chatmute, mc, silence]
   kickall:
     description: Kicks all players
-    usage: /kickall
     permission: smidge.staff
   maintenancetoggle:
     description: Toggles Maintenance Mode
-    usage: /maintenance
     permission: smidge.admin
   About:
     description: Plugin Description
-    usage: /about
     aliases: [plugininfo, didibreakit]
   permissions:
     smidge.staff:
