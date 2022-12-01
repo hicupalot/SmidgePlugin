@@ -42,6 +42,9 @@ commands:
   About:
     description: Plugin Description
     aliases: [plugininfo, didibreakit]
+  PlayerRaffle:
+    description: Chooses a player at random
+    aliases: [raffle, randomplayer]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

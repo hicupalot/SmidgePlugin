@@ -13,7 +13,7 @@ public class About implements CommandExecutor {
         //Variables Above, Message Sends Below
         sender.sendMessage(pluginName + pluginVersion + ":");
         sender.sendMessage(ChatColor.GOLD + "Description: " + pluginDescription);
-        sender.sendMessage(ChatColor.GOLD + "Author: " + pluginAuthor);
+        sender.sendMessage(ChatColor.GOLD + "Author:" + pluginAuthor);
   return true;
     }
 }

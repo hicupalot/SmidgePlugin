@@ -15,6 +15,8 @@ public class Config {
         public static final HashMap<UUID, Boolean> petDeathToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Boolean> muteChat = new HashMap<>();
         public static final HashMap<UUID,Boolean> maintenaceToggle = new HashMap<>();
+
+        //DEFAULT MESSAGES
         public static final String noPermission = ChatColor.translateAlternateColorCodes('&',
                 "&c[Smidge] You do not have permission");
         public static final String notPlayer = ChatColor.translateAlternateColorCodes('&',
