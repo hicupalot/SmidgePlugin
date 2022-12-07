@@ -45,6 +45,9 @@ commands:
   PlayerRaffle:
     description: Chooses a player at random
     aliases: [raffle, randomplayer]
+  DeFollow:
+    description: Stops you following someone
+    aliases: [unspy, spystop]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

@@ -34,6 +34,7 @@ public class Follower implements CommandExecutor, TabCompleter {
                 sender.sendMessage(ChatColor.RED + "[Smidge] You cannot spy on yourself!");
                 return false;
             } else {
+                Config.originalLocation.put(((Player) sender).getUniqueId(), ((Player) sender).getLocation());
                 VanishAPI.hidePlayer((Player) sender);
                 ((Player) sender).setGameMode(GameMode.SPECTATOR);
                 ((Player) sender).teleport(target);
