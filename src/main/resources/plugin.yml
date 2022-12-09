@@ -48,6 +48,9 @@ commands:
   DeFollow:
     description: Stops you following someone
     aliases: [unspy, spystop]
+  stats:
+    description: Gets server stats
+    aliases: [serverstats, statistics]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

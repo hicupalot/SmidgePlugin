@@ -21,6 +21,7 @@ public class clearchat implements CommandExecutor {
             Bukkit.broadcastMessage("");
         }
         String broadCast = ChatColor.translateAlternateColorCodes('&', "&c[&eSTAFF&c] &eChat was cleared by " + sender.getName());
+        Bukkit.broadcastMessage(broadCast);
         return true;
     }
 }

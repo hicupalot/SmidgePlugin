@@ -21,6 +21,11 @@ public class DeFollow implements CommandExecutor, Listener {
         if (!sender.hasPermission("smidge.staff")) {
             sender.sendMessage(Config.noPermission);
             return false;
+        }
+        if (!Config.originalLocation.containsKey(((Player) sender).getUniqueId())){
+            String noFollow = ChatColor.translateAlternateColorCodes('&',"&cYou aren't currently following anyone!");
+            sender.sendMessage(noFollow);
+            return false;
         } else {
             Location playerLoc = Config.originalLocation.get(((Player) sender).getUniqueId());
             ((Player) sender).teleport(playerLoc);
