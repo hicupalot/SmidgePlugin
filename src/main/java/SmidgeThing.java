@@ -28,6 +28,7 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("PlayerRaffle").setExecutor(new PlayerRaffle());
         getCommand("DeFollow").setExecutor(new DeFollow());
         getCommand("stats").setExecutor(new stats());
+        getCommand("hideall").setExecutor(new hideall());
     }
     @Override
     public void onDisable() {

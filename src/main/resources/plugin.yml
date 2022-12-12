@@ -51,6 +51,9 @@ commands:
   stats:
     description: Gets server stats
     aliases: [serverstats, statistics]
+  hideall:
+    description: Hide all online players
+    aliases: [antisocialmode, nosee]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

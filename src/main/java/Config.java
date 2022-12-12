@@ -17,6 +17,7 @@ public class Config {
         public static final HashMap<UUID, Boolean> muteChat = new HashMap<>();
         public static final HashMap<UUID,Boolean> maintenaceToggle = new HashMap<>();
         public static final HashMap<UUID, Location> originalLocation = new HashMap<>();
+        public static final HashMap<UUID, Boolean> hideAllToggle = new HashMap<>();
 
         //DEFAULT MESSAGES
         public static final String noPermission = ChatColor.translateAlternateColorCodes('&',
