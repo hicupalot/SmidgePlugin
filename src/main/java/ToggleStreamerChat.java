@@ -22,35 +22,34 @@ public class ToggleStreamerChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.streamerToggle.containsKey(playerUUID)) {
                 Config.streamerToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT" + ChatColor.YELLOW + "] "
-                        + ChatColor.GOLD + "ENABLED");
-                //----------------------------------------------------------------------------------------------------//
-                if (Config.streamerToggle.containsKey(playerUUID)) {
-                    Config.streamerToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "STREAMERCHAT" + ChatColor.YELLOW + "] "
-                            + ChatColor.RED + "DISABLED");
+                String enabled = ChatColor.translateAlternateColorCodes('&', "&c[&2STREAMER&c] &6ENABLED");
+                sender.sendMessage(enabled);
+                //Remove Player From Chat Channels
+                if (Config.staffToggle.containsKey(((Player) sender).getUniqueId())) {
+                    Config.staffToggle.remove(((Player) sender).getUniqueId());
+                    sender.sendMessage(Config.staffRemove);
+                    return true;
                 }
-                //---------------------------------------------------------------------------------------------------//
-                if (Config.streamerToggle.containsKey(playerUUID)) {
-                    Config.streamerToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STREAMERCHAT" + ChatColor.RED + "] "
-                            + ChatColor.RED + "DISABLED");
+                if (Config.adminToggle.containsKey(((Player) sender).getUniqueId())){
+                    Config.adminToggle.remove(((Player) sender).getUniqueId());
+                    sender.sendMessage(Config.adminRemove);
+                    return true;
                 }
-                //---------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------------------
                 return true;
             } else Config.streamerToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMERCHAT"
-                    + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
+            String disabled = ChatColor.translateAlternateColorCodes('&', "&e[&9STREAMER&e] &cDISABLED");
+            sender.sendMessage(disabled);
             return true;
         }
         String message = ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] "
-                + ChatColor.GOLD + ((Player) sender).getDisplayName() + ": " + ChatColor.LIGHT_PURPLE;
+                + ChatColor.GOLD + ((Player) sender).getDisplayName() + ": ";
         for (String s : args) {
             message = message + s + " ";
             String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
             Bukkit.broadcast(colorMessage, "smidge.streamer");
             return true;
         }
-  return true;
+ return true;
     }
 }

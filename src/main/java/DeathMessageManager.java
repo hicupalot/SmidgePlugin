@@ -14,5 +14,8 @@ public class DeathMessageManager implements Listener {
         else if (deathReason.equals(EntityDamageEvent.DamageCause.VOID)){
             e.setDeathMessage("How did "+playerName+" even get here??");
         }
+        else if (deathReason.equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)){
+            e.setDeathMessage(playerName+" was exploded!");
+        }
     }
 }

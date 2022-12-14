@@ -24,4 +24,10 @@ public class Config {
                 "&c[Smidge] You do not have permission");
         public static final String notPlayer = ChatColor.translateAlternateColorCodes('&',
                 "&c[Smidge] You must be a player to do this");
+        public static final String staffRemove = ChatColor.translateAlternateColorCodes('&',
+                "&c[&eSTAFFCHAT&c] &eDISABLED");
+        public static final String streamerRemove = ChatColor.translateAlternateColorCodes('&',
+            "&e[&9STREAMER&e] &9DISABLED");
+        public static final String adminRemove = ChatColor.translateAlternateColorCodes('&',
+            "&e[&4ADMINCHAT&e] &4DISABLED");
 }

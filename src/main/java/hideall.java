@@ -3,7 +3,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,21 +22,25 @@ public class hideall implements CommandExecutor, Listener {
             sender.sendMessage(Config.noPermission);
             return false;
         }
+        if (Bukkit.getOnlinePlayers().size()==0){
+            String noPlayers = ChatColor.translateAlternateColorCodes('&',"&c[Smidge] There are no players online");
+            sender.sendMessage(noPlayers);
+            return false;
+        }
         if (!Config.hideAllToggle.containsKey(((Player) sender).getUniqueId())) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.hasPermission("smidge.staff")) {
-                    String hideAllFail = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] No players are online");
-                    sender.sendMessage(hideAllFail);
+                if (player.getUniqueId()==((Player) sender).getUniqueId()){
                     return false;
-                } else {
+                }
+                else {
                     ((Player) sender).hidePlayer(Config.plugin, player);
                 }
             }
-            String hideAllMessage = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] Hid All Players");
-            sender.sendMessage(hideAllMessage);
-            Config.hideAllToggle.put(((Player) sender).getUniqueId(), true);
         }
-        return true;
+        String hideAllMessage = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] Hid All Players");
+        sender.sendMessage(hideAllMessage);
+        Config.hideAllToggle.put(((Player) sender).getUniqueId(), true);
+    return true;
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
@@ -56,7 +59,7 @@ public class hideall implements CommandExecutor, Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e){
         if (Config.hideAllToggle.containsKey(e.getPlayer().getUniqueId())){
-           Config.hideAllToggle.remove(e.getPlayer().getUniqueId());
+            Config.hideAllToggle.remove(e.getPlayer().getUniqueId());
         }
     }
 }

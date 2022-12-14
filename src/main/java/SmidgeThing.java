@@ -12,6 +12,8 @@ public final class SmidgeThing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PetDeathPreventer(),this);
         getServer().getPluginManager().registerEvents(new ChatMuted(),this);
         getServer().getPluginManager().registerEvents(new maintenance(), this);
+    //    getServer().getPluginManager().registerEvents(new hideall(),this);
+        getServer().getPluginManager().registerEvents(new DeathMessageManager(), this);
         /*This Seperates out the Events and Commands
         ----------------------------------------------------------------------------------------
          */
@@ -28,7 +30,8 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("PlayerRaffle").setExecutor(new PlayerRaffle());
         getCommand("DeFollow").setExecutor(new DeFollow());
         getCommand("stats").setExecutor(new stats());
-        getCommand("hideall").setExecutor(new hideall());
+      //  getCommand("hideall").setExecutor(new hideall());
+        //getCommand("forceshow").setExecutor(new ForceShow());
     }
     @Override
     public void onDisable() {

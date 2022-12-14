@@ -22,35 +22,32 @@ public class ToggleAdminChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
-                        + ChatColor.GOLD + "ENABLED");
-                //-----------------------------------------------------------------------------------------//
-                if (Config.adminToggle.containsKey(playerUUID)) {
-                    Config.adminToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.BLUE + "ADMINCHAT"
-                            + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
+                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.YELLOW + "] " + ChatColor.GOLD + "ENABLED");
+                //Remove Player From Chat Channels
+                if (Config.streamerToggle.containsKey(((Player) sender).getUniqueId())) {
+                    Config.streamerToggle.remove(((Player) sender).getUniqueId());
+                    sender.sendMessage(Config.streamerRemove);
+                    return true;
                 }
-                //-----------------------------------------------------------------------------------------//
-                if (Config.adminToggle.containsKey(playerUUID)) {
-                    Config.adminToggle.remove(playerUUID);
-                    sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "ADMINCHAT" + ChatColor.RED + "] "
-                            + ChatColor.RED + "DISABLED");
+                if (Config.staffToggle.containsKey(((Player) sender).getUniqueId())){
+                    Config.staffToggle.remove(((Player) sender).getUniqueId());
+                    sender.sendMessage(Config.staffRemove);
+                    return true;
                 }
-                //---------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------------------
                 return true;
             } else Config.adminToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "ADMINCHAT" + ChatColor.YELLOW + "] "
-                    + ChatColor.RED + "DISABLED");
+            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMINCHAT" + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
             return true;
         }
-        String message = ChatColor.YELLOW + "[" + ChatColor.RED + "ADMIN" + ChatColor.YELLOW + "] "
-                + ((Player) sender).getDisplayName() + ": " + ChatColor.YELLOW;
+        String message = ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.YELLOW + "] "
+                + ChatColor.BLUE + ((Player) sender).getDisplayName() + ": ";
         for (String s : args) {
             message = message + s + " ";
             String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
             Bukkit.broadcast(colorMessage, "smidge.admin");
             return true;
         }
-    return true;
+        return true;
     }
 }
