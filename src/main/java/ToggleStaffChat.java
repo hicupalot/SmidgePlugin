@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.UUID;
 
 public class ToggleStaffChat implements CommandExecutor {
+    @SuppressWarnings("deprecated")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -22,7 +23,7 @@ public class ToggleStaffChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.staffToggle.containsKey(playerUUID)) {
                 Config.staffToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "STAFFCHAT" + ChatColor.RED + "] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(Config.staffAdd);
                 //Remove Player From Chat Channels
                 if (Config.streamerToggle.containsKey(((Player) sender).getUniqueId())) {
                     Config.streamerToggle.remove(((Player) sender).getUniqueId());
@@ -37,17 +38,17 @@ public class ToggleStaffChat implements CommandExecutor {
                 //----------------------------------------------------------------------------
                 return true;
             } else Config.staffToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + "STAFFCHAT" + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
-            return true;
+            sender.sendMessage(Config.staffRemove);
+        return true;
         }
-        String message = ChatColor.YELLOW + "[" + ChatColor.RED + "STAFF" + ChatColor.YELLOW + "] "
-                + ChatColor.GOLD + ((Player) sender).getDisplayName() + ": ";
+        String name = ChatColor.translateAlternateColorCodes('&', "&6"+((Player) sender).getDisplayName());
+        String message = Config.staffPrefix + " "
+                + name + ": ";
         for (String s : args) {
-            message = message + s + " ";
+            message = message + ChatColor.GREEN+s + " ";
+        }
             String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
             Bukkit.broadcast(colorMessage, "smidge.staff");
             return true;
         }
-        return true;
-    }
 }

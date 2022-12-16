@@ -20,6 +20,7 @@ public class ChatMuted implements Listener {
         }
     }
     @EventHandler
+    @SuppressWarnings("deprecated")
     public void onMuterLeave(PlayerQuitEvent e) {
         if (!Config.muteChat.isEmpty()) {
            if (Config.muteChat.containsKey(e.getPlayer().getUniqueId())) {

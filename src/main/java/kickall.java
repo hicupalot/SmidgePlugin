@@ -10,7 +10,7 @@ public class kickall implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
-            sender.sendMessage(Config.notPlayer);
+            sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
         if (!sender.hasPermission("smidge.staff")) {

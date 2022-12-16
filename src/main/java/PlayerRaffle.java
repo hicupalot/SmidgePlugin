@@ -1,5 +1,3 @@
-import de.myzelyam.api.vanish.VanishAPI;
-import de.myzelyam.supervanish.SuperVanish;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,7 +13,7 @@ public class PlayerRaffle implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
-            sender.sendMessage(Config.notPlayer);
+            sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
         if (!sender.hasPermission("smidge.admin")) {

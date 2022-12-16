@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.UUID;
 
 public class ToggleStreamerChat implements CommandExecutor {
+    @SuppressWarnings("deprecated")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -22,8 +23,7 @@ public class ToggleStreamerChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.streamerToggle.containsKey(playerUUID)) {
                 Config.streamerToggle.put(playerUUID, true);
-                String enabled = ChatColor.translateAlternateColorCodes('&', "&c[&2STREAMER&c] &6ENABLED");
-                sender.sendMessage(enabled);
+                sender.sendMessage(Config.streamerAdd);
                 //Remove Player From Chat Channels
                 if (Config.staffToggle.containsKey(((Player) sender).getUniqueId())) {
                     Config.staffToggle.remove(((Player) sender).getUniqueId());
@@ -38,18 +38,17 @@ public class ToggleStreamerChat implements CommandExecutor {
                 //----------------------------------------------------------------------------
                 return true;
             } else Config.streamerToggle.remove(playerUUID);
-            String disabled = ChatColor.translateAlternateColorCodes('&', "&e[&9STREAMER&e] &cDISABLED");
-            sender.sendMessage(disabled);
+            sender.sendMessage(Config.streamerRemove);
             return true;
         }
-        String message = ChatColor.YELLOW + "[" + ChatColor.BLUE + "STREAMER" + ChatColor.YELLOW + "] "
-                + ChatColor.GOLD + ((Player) sender).getDisplayName() + ": ";
+        String name = ChatColor.translateAlternateColorCodes('&', "&9"+((Player) sender).getDisplayName());
+        String message = Config.streamerPrefix +" "
+                + name + ": ";
         for (String s : args) {
-            message = message + s + " ";
+            message = message + ChatColor.LIGHT_PURPLE+s + " ";
+        }
             String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
             Bukkit.broadcast(colorMessage, "smidge.streamer");
             return true;
         }
- return true;
-    }
 }

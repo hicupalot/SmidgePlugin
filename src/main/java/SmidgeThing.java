@@ -4,7 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SmidgeThing extends JavaPlugin {
     @Override
    public void onEnable(){
-        System.out.println(ChatColor.YELLOW+"[SmidgeCode] is starting up!");
+        String startup = ChatColor.translateAlternateColorCodes('&',"&6[SmidgeCode] is starting");
+        getLogger().info(startup);
         getServer().getPluginManager().registerEvents(new EndDisable(),this);
         getServer().getPluginManager().registerEvents(new AdminChat(),this);
         getServer().getPluginManager().registerEvents(new StaffChat(),this);
@@ -32,7 +33,8 @@ public final class SmidgeThing extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.GOLD + "[SmidgeCode] Shutting Down!");
+        String shutdown = ChatColor.translateAlternateColorCodes('&',"&c[SmidgeCode] Shutting Down!");
+        getLogger().info(shutdown);
     }
 }
 

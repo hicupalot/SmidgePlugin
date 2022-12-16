@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.UUID;
 
 public class ToggleAdminChat implements CommandExecutor {
+    @SuppressWarnings("deprecated")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -22,14 +23,14 @@ public class ToggleAdminChat implements CommandExecutor {
         if (args.length < 1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {
                 Config.adminToggle.put(playerUUID, true);
-                sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.YELLOW + "] " + ChatColor.GOLD + "ENABLED");
+                sender.sendMessage(Config.adminAdd);
                 //Remove Player From Chat Channels
                 if (Config.streamerToggle.containsKey(((Player) sender).getUniqueId())) {
                     Config.streamerToggle.remove(((Player) sender).getUniqueId());
                     sender.sendMessage(Config.streamerRemove);
                     return true;
                 }
-                if (Config.staffToggle.containsKey(((Player) sender).getUniqueId())){
+                if (Config.staffToggle.containsKey(((Player) sender).getUniqueId())) {
                     Config.staffToggle.remove(((Player) sender).getUniqueId());
                     sender.sendMessage(Config.staffRemove);
                     return true;
@@ -37,17 +38,17 @@ public class ToggleAdminChat implements CommandExecutor {
                 //----------------------------------------------------------------------------
                 return true;
             } else Config.adminToggle.remove(playerUUID);
-            sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMINCHAT" + ChatColor.YELLOW + "] " + ChatColor.RED + "DISABLED");
+            sender.sendMessage(Config.adminRemove);
             return true;
         }
-        String message = ChatColor.YELLOW + "[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.YELLOW + "] "
-                + ChatColor.BLUE + ((Player) sender).getDisplayName() + ": ";
-        for (String s : args) {
-            message = message + s + " ";
-            String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
-            Bukkit.broadcast(colorMessage, "smidge.admin");
-            return true;
+        String name = ChatColor.translateAlternateColorCodes('&', "&4"+((Player) sender).getDisplayName());
+        String message = Config.adminPrefix + " "
+                    + name + ": ";
+            for (String s : args) {
+                message = message + ChatColor.GOLD+s + " ";
+            }
+                String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
+                Bukkit.broadcast(colorMessage, "smidge.admin");
+                return true;
         }
-        return true;
     }
-}
