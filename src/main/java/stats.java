@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class stats implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player) || sender instanceof ConsoleCommandSender) {
+        if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
             sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
@@ -21,9 +21,9 @@ public class stats implements CommandExecutor {
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         String onlinePlayersMessage = ChatColor.translateAlternateColorCodes('&',"&cCurrently there are &6"+
                 onlinePlayers +" &conline");
-        String verInfo = Bukkit.getBukkitVersion();
+        String verInfo = Bukkit.getVersion();
         String verMessage = ChatColor.translateAlternateColorCodes('&',"&cBukkit Version: " +verInfo);
-        long worldSize = Bukkit.getWorldContainer().getTotalSpace()/1000000000;
+        long worldSize = Bukkit.getWorldContainer().getTotalSpace()/1000000000; //With commas 1,000,000,000
         String worldData = ChatColor.translateAlternateColorCodes('&',"&cThe World Is Currently: &6"+worldSize+"&cgb" );
         int totalPlayers = Bukkit.getOfflinePlayers().length;
         String divider = ChatColor.translateAlternateColorCodes('&',"&c-----------------------------");
@@ -34,7 +34,7 @@ public class stats implements CommandExecutor {
         int totalTicks = Bukkit.getCurrentTick();
         String whitelistedSize = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+whiteListAmount+" &cplayers have been whitelisted");
         String banList = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+banAmount+" &cplayers have been banned");
-        String tps = ChatColor.translateAlternateColorCodes('&',"&cCurrent Server TPS is: &6"+tpsCount);
+        String tps = ChatColor.translateAlternateColorCodes('&',"&cCurrent Server TPS is: &6"+tpsCount[0]);
         String totalT = ChatColor.translateAlternateColorCodes('&',"&cSince Startup There Have been: &6"+totalTicks+" &cticks");
         //------------------------------------------Messages Start------------------------------------------------------//
         sender.sendMessage(divider);
