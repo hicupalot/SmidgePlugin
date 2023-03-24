@@ -21,7 +21,7 @@ public class PetDeathPreventer implements Listener {
             }
         }
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
-         //Debug   Bukkit.broadcastMessage(e.getCause().toString());
+            //Debug   Bukkit.broadcastMessage(e.getCause().toString());
             if (e.getEntity().getCustomName() != null) {
                 if (!Config.petDeathToggle.containsKey(playerUUID)) {
                     e.setCancelled(true);
@@ -35,7 +35,8 @@ public class PetDeathPreventer implements Listener {
         if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
             if (e.getEntity().getCustomName() != null) {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.LAVA) || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK) || e.getCause().equals(EntityDamageEvent.DamageCause.HOT_FLOOR)) {
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK) || e.getCause().equals(EntityDamageEvent.DamageCause.HOT_FLOOR)
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.LIGHTNING)) {
                     e.setCancelled(true);
                 }
             }
@@ -56,11 +57,22 @@ public class PetDeathPreventer implements Listener {
         }
     }
 
+    @EventHandler
+    public void playerAttackButUnintentional(EntityDamageEvent e) {
+        if (!e.getEntity().getType().equals(EntityType.PLAYER) && e.getEntity().getType().isAlive()) {
+            if (e.getEntity().getCustomName() != null) {
+                if (e.getCause().equals(EntityDamageEvent.DamageCause.THORNS) || e.getCause().equals(EntityDamageEvent.DamageCause.POISON)
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.MAGIC) || e.getCause().equals(EntityDamageEvent.DamageCause.DRAGON_BREATH)) {
+                    e.setCancelled(true);
+                }
+            }
+        }
+    }
+
     //DISABLE THE HASHMAP CASES
     @EventHandler
     public void onPetLeave(PlayerQuitEvent e) {
         UUID playerUUID = e.getPlayer().getUniqueId();
         Config.petDeathToggle.remove(playerUUID);
     }
-
 }

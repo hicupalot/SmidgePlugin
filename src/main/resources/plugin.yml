@@ -1,9 +1,9 @@
 name: SmidgeThing
-version: 1.2.5
+version: 1.3
 main: SmidgeThing
 api-version: 1.19
 author: hicupalot
-depend: [SuperVanish]
+depend: [SuperVanish, DiscordSRV]
 commands:
   ToggleAdminChat:
     description: Toggle/Speak the Admin Chat
@@ -51,6 +51,12 @@ commands:
   stats:
     description: Gets server stats
     aliases: [serverstats, statistics]
+  Timer:
+    description: Starts a timer
+    aliases: [starttimer, timerstart]
+  Convert:
+    description: Converts a larger unit of time into seconds
+    aliases: [timeconvert, converttime]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

@@ -2,8 +2,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SmidgeThing extends JavaPlugin {
+    private static SmidgeThing instance;
+    public static SmidgeThing getInstance() {
+        return instance;
+    }
     @Override
    public void onEnable(){
+        instance = this;
         String startup = ChatColor.translateAlternateColorCodes('&',"&6[SmidgeCode] is starting");
         getLogger().info(startup);
         getServer().getPluginManager().registerEvents(new EndDisable(),this);
@@ -30,6 +35,8 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("PlayerRaffle").setExecutor(new PlayerRaffle());
         getCommand("DeFollow").setExecutor(new DeFollow());
         getCommand("stats").setExecutor(new stats());
+        getCommand("timer").setExecutor(new Timer());
+        getCommand("convert").setExecutor(new TimeConvert());
     }
     @Override
     public void onDisable() {

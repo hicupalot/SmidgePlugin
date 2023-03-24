@@ -7,7 +7,7 @@ public class DeathMessageManager implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e){
         EntityDamageEvent.DamageCause deathReason = e.getEntity().getLastDamageCause().getCause();
-        String playerName = e.getEntity().getDisplayName();
+        String playerName = e.getEntity().getName();
         if (deathReason.equals(EntityDamageEvent.DamageCause.FALL)){
             e.setDeathMessage(playerName + " went splat");
         }
