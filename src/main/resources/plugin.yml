@@ -57,6 +57,9 @@ commands:
   Convert:
     description: Converts a larger unit of time into seconds
     aliases: [timeconvert, converttime]
+  StopTimer:
+    description: Stops the running timer
+    aliases: [timerstop, stopcurrenttimer]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

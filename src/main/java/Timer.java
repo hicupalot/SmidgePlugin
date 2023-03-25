@@ -13,6 +13,7 @@ import java.util.List;
 
 public class Timer implements CommandExecutor, TabCompleter {
     int time;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -27,8 +28,8 @@ public class Timer implements CommandExecutor, TabCompleter {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
             return false;
         }
-        if (args.length > 1){
-            sender.sendMessage(ChatColor.RED+ "[Smidge] Command Usage /starttimer (seconds)");
+        if (args.length > 1) {
+            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
             return false;
         }
         time = Integer.parseInt(args[0]);
@@ -39,16 +40,17 @@ public class Timer implements CommandExecutor, TabCompleter {
                 int timeleft = time;
                 if (time == 0) {
                     return;
-                    }
+                }
                 time--;
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendActionBar("Time Remaining: " + String.valueOf(timeleft));
                 }
-                        // player.sendMessage(String.valueOf(timeleft)); //Debug
-                    }
+                // player.sendMessage(String.valueOf(timeleft)); //Debug
+            }
         }, 0L, 20L);
-  return false;
+        return false;
     }
+
     @Override
     public java.util.List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 0) {

@@ -37,6 +37,7 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("stats").setExecutor(new stats());
         getCommand("timer").setExecutor(new Timer());
         getCommand("convert").setExecutor(new TimeConvert());
+        getCommand("stoptimer").setExecutor(new StopTimer());
     }
     @Override
     public void onDisable() {
