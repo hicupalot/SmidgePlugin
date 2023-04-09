@@ -43,7 +43,11 @@ public class Timer implements CommandExecutor, TabCompleter {
                 int H = seconds / 60;
                 int M = H % 60;
                 H = H / 60;
+                String timerUp = ChatColor.translateAlternateColorCodes('&', "&6&l[Smidge] " +
+                        "&6The Timer Is Up!");
                 if (time == 0) {
+                    Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
+                    Bukkit.broadcastMessage(timerUp);
                     return;
                 }
                 time--;
