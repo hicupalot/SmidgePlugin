@@ -59,7 +59,7 @@ commands:
     aliases: [timeconvert, converttime]
   StopTimer:
     description: Stops the running timer
-    aliases: [timerstop, stopcurrenttimer]
+    aliases: [timerstop, stopcurrenttimer, canceltimer, timercancel]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

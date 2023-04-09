@@ -38,12 +38,25 @@ public class Timer implements CommandExecutor, TabCompleter {
             @Override
             public void run() {
                 int timeleft = time;
+                int seconds = timeleft;
+                int S = seconds % 60;
+                int H = seconds / 60;
+                int M = H % 60;
+                H = H / 60;
                 if (time == 0) {
                     return;
                 }
                 time--;
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.sendActionBar("Time Remaining: " + String.valueOf(timeleft));
+                    if (H!=0) {
+                        player.sendActionBar("Time Remaining: " + H + " Hours " + M + " Minutes " + S + " Seconds");
+                    }
+                    else if (M!=0){
+                        player.sendActionBar("Time Remaining: " + M + " Minutes " + S + " Seconds");
+                    }
+                    else {
+                        player.sendActionBar("Time Remaining: " + S+ " Seconds");
+                    }
                 }
                 // player.sendMessage(String.valueOf(timeleft)); //Debug
             }

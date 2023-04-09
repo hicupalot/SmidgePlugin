@@ -21,6 +21,15 @@ public class StopTimer implements CommandExecutor {
             return false;
         }
         Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
+        String cancelled = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] Cancelled the current timer");
+        String cancelAnnounce = ChatColor.translateAlternateColorCodes('&',"&c&l[Smidge] "+"&eThe current timer was cancelled by "+
+                sender.getName());
+        sender.sendMessage(cancelled);
+        for (Player player : Bukkit.getOnlinePlayers()){
+            if (player!=sender){
+                player.sendMessage(cancelAnnounce);
+            }
+        }
         return true;
     }
 }
