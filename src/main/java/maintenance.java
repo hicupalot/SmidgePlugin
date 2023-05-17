@@ -1,4 +1,5 @@
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -6,7 +7,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class maintenance implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        if (!Config.maintenaceToggle.isEmpty()) {
+        FileConfiguration config = SmidgeThing.getInstance().getConfig();
+        if (config.getBoolean("maintenance.")){
             if (!e.getPlayer().hasPermission("smidge.maintenance")) {
                 e.setJoinMessage("");
                 String kickReason = ChatColor.translateAlternateColorCodes('&',

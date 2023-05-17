@@ -3,11 +3,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class maintenancetoggle implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        FileConfiguration config = SmidgeThing.getInstance().getConfig();
         if (!(sender instanceof Player)) {
             sender.sendMessage(Config.notPlayer);
             return false;
@@ -16,15 +18,17 @@ public class maintenancetoggle implements CommandExecutor {
             sender.sendMessage(Config.noPermission);
             return false;
         }
-        if (Config.maintenaceToggle.isEmpty()) {
-            Config.maintenaceToggle.put(((Player) sender).getUniqueId(), true);
+        if (!config.getBoolean("maintenance")){
+            config.set("maintenance",true);
             String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Enabled");
             Bukkit.broadcastMessage(maintenanceMessage);
+            SmidgeThing.getInstance().saveConfig();
         }
         else{
-            Config.maintenaceToggle.clear();
+            config.set("maintenance",false);
             String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Disabled");
             Bukkit.broadcastMessage(maintenanceMessage);
+            SmidgeThing.getInstance().saveConfig();
         }
     return true;
     }

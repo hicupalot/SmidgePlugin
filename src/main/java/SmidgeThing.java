@@ -11,6 +11,8 @@ public final class SmidgeThing extends JavaPlugin {
         instance = this;
         String startup = ChatColor.translateAlternateColorCodes('&',"&6[SmidgeCode] is starting");
         getLogger().info(startup);
+        getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new EndDisable(),this);
         getServer().getPluginManager().registerEvents(new AdminChat(),this);
         getServer().getPluginManager().registerEvents(new StaffChat(),this);
@@ -19,6 +21,7 @@ public final class SmidgeThing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatMuted(),this);
         getServer().getPluginManager().registerEvents(new maintenance(), this);
         getServer().getPluginManager().registerEvents(new DeathMessageManager(), this);
+        getServer().getPluginManager().registerEvents(new Filter(),this);
         /*This Seperates out the Events and Commands
         ----------------------------------------------------------------------------------------
          */
@@ -38,6 +41,9 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("timer").setExecutor(new Timer());
         getCommand("convert").setExecutor(new TimeConvert());
         getCommand("stoptimer").setExecutor(new StopTimer());
+        getCommand("togglestreaming").setExecutor(new ToggleStreaming());
+        getCommand("filteradd").setExecutor(new FilterAdd());
+        getCommand("filterremove").setExecutor(new FilterRemove());
     }
     @Override
     public void onDisable() {
