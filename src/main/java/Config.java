@@ -1,5 +1,7 @@
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -13,6 +15,7 @@ public class Config {
         public static final HashMap<UUID,Boolean> maintenaceToggle = new HashMap<>();
         public static final HashMap<UUID, Location> originalLocation = new HashMap<>();
         public static final HashMap<UUID, Boolean> hideAllToggle = new HashMap<>();
+        public static final Player smidgeUser = Bukkit.getPlayer("34ac28eb-7372-44dc-9ef0-71bb0ca7885c");
 
         //DEFAULT MESSAGES
         public static final String noPermission = ChatColor.translateAlternateColorCodes('&',

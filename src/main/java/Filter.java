@@ -1,4 +1,3 @@
-import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -6,8 +5,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
-
-import java.util.EventListener;
 
 public class Filter implements Listener {
     @EventHandler
@@ -21,8 +18,11 @@ public class Filter implements Listener {
                 e.setCancelled(true);
                 String staffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&ESMIDGEFILTER&c] "
                         + player.getName() + "said " + word + " this word is in the general filter!");
+                String playerMessage = ChatColor.translateAlternateColorCodes('&', "&c[&eSMIDGEFILTER&c] You cannot say "+
+                        word + " &con this server!");
+                player.sendMessage(playerMessage);
                 for (Player player1 : Bukkit.getOnlinePlayers()) {
-                    if (player1.hasPermission("smidge.staff")) {
+                    if (player1.hasPermission("smidge.staff") && !player1.hasPermission("smidge.streaming")) {
                         player1.sendMessage(staffBroadcast);
                         //Possibly could use DiscordSRV
                     }
@@ -32,8 +32,11 @@ public class Filter implements Listener {
                     e.setCancelled(true);
                     String staffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&ESMIDGEFILTER&c] "
                             + player.getName() + "said " + word + " this word is in the streaming filter!");
+                    String playerMessage = ChatColor.translateAlternateColorCodes('&', "&c[&eSMIDGEFILTER&c] You cannot say "+
+                            word + " &con this server whilst Smidge is live!");
+                    player.sendMessage(playerMessage);
                     for (Player player1 : Bukkit.getOnlinePlayers()) {
-                        if (player1.hasPermission("smidge.staff")) {
+                        if (player1.hasPermission("smidge.staff") && !player1.hasPermission("smidge.streaming")) {
                             player1.sendMessage(staffBroadcast);
 
                         }

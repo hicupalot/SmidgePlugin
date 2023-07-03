@@ -3,7 +3,7 @@ version: 1.4
 main: SmidgeThing
 api-version: 1.19
 author: hicupalot
-depend: [SuperVanish, DiscordSRV]
+depend: [SuperVanish, LuckPerms]
 commands:
   ToggleAdminChat:
     description: Toggle/Speak the Admin Chat
@@ -85,5 +85,8 @@ commands:
     smidge.maintenance:
       description: 'Join During Maintenance'
       default: op
+    smidge.streaming:
+      description: 'Removes you from Staff Notifications'
+      default: false
 
 
