@@ -31,7 +31,7 @@ public class Filter implements Listener {
                 if (config.getList("stream").contains(word)) {
                     e.setCancelled(true);
                     String staffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&ESMIDGEFILTER&c] "
-                            + player.getName() + "said " + word + " this word is in the streaming filter!");
+                            + player.getName() + " said " + word + " this word is in the streaming filter!");
                     String playerMessage = ChatColor.translateAlternateColorCodes('&', "&c[&eSMIDGEFILTER&c] You cannot say "+
                             word + " &con this server whilst Smidge is live!");
                     player.sendMessage(playerMessage);

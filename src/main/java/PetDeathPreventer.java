@@ -50,7 +50,8 @@ public class PetDeathPreventer implements Listener {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL) || e.getCause().equals(EntityDamageEvent.DamageCause.FALLING_BLOCK)
                         || e.getCause().equals(EntityDamageEvent.DamageCause.CRAMMING) || e.getCause().equals(EntityDamageEvent.DamageCause.THORNS)
                         || e.getCause().equals(EntityDamageEvent.DamageCause.SONIC_BOOM) || e.getCause().equals(EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)
-                        || e.getCause().equals(EntityDamageEvent.DamageCause.MELTING)) {
+                        || e.getCause().equals(EntityDamageEvent.DamageCause.MELTING) || e.getCause().equals(EntityDamageEvent.DamageCause.WORLD_BORDER) ||
+                        e.getCause().equals(EntityDamageEvent.DamageCause.VOID ) || e.getCause().equals(EntityDamageEvent.DamageCause.WITHER)) {
                     e.setCancelled(true);
                 }
             }

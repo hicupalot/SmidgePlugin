@@ -1,7 +1,7 @@
 name: SmidgeThing
 version: 1.4
 main: SmidgeThing
-api-version: 1.19
+api-version: 1.20
 author: hicupalot
 depend: [SuperVanish, LuckPerms]
 commands:
@@ -69,6 +69,9 @@ commands:
   filteradd:
     description: Adds words to filters
     aliases: [filterword, addwordtofilter]
+  coinflip:
+    description: Flips a coin
+    aliases: [headsortails, flipcoin]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'
