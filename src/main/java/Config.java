@@ -12,7 +12,6 @@ public class Config {
         public static final HashMap<UUID, Boolean> streamerToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Boolean> petDeathToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Boolean> muteChat = new HashMap<>();
-        public static final HashMap<UUID,Boolean> maintenaceToggle = new HashMap<>();
         public static final HashMap<UUID, Location> originalLocation = new HashMap<>();
         public static final HashMap<UUID, Boolean> hideAllToggle = new HashMap<>();
         public static final Player smidgeUser = Bukkit.getPlayer("34ac28eb-7372-44dc-9ef0-71bb0ca7885c");

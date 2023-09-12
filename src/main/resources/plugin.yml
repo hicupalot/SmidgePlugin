@@ -91,5 +91,7 @@ commands:
     smidge.streaming:
       description: 'Removes you from Staff Notifications'
       default: false
-
+    smidge.filterbypass:
+      description: 'Bypasses Chat Filtering'
+      default: false
 

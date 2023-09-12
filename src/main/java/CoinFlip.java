@@ -15,6 +15,8 @@ public class CoinFlip implements CommandExecutor {
             sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
+
+
         int headsOrTails = new Random().nextInt(2);
         if (headsOrTails == 1) {
             String heads = ChatColor.translateAlternateColorCodes('&',
@@ -23,7 +25,7 @@ public class CoinFlip implements CommandExecutor {
             return false;
         }
            else if (headsOrTails == 0) {
-                String tails = ChatColor.translateAlternateColorCodes('&',
+               String tails = ChatColor.translateAlternateColorCodes('&',
                         "&cThe coin landed on tails!");
                 sender.sendMessage(tails);
                 return true;
