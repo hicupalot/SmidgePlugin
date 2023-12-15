@@ -1,0 +1,97 @@
+name: SmidgeThing
+version: 1.4
+main: SmidgeThing
+api-version: 1.20
+author: hicupalot
+depend: [SuperVanish, LuckPerms]
+commands:
+  ToggleAdminChat:
+    description: Toggle/Speak the Admin Chat
+    permission: smidge.admin
+    aliases: [adminchat, ac]
+  ToggleStaffChat:
+    description: Toggle/Speak the Staff Chat
+    permission: smidge.staff
+    aliases: [staffchat, sc]
+  ToggleStreamerChat:
+    description: Toggle/Speak in Streamer Chat
+    permission: smidge.streamer
+    aliases: [streamchat, streamerchat]
+  follower:
+    description: Monitor a Player
+    permission: smidge.staff
+    aliases: [investigate, monitor, spy]
+  TogglePetKiller:
+    description: Toggle Pet Killing
+    permission: smidge.staff
+    aliases: [petkill, killpet]
+  clearchat:
+    description: Clears the chat
+    permission: smidge.staff
+    aliases: [chatclear, cc]
+  mutechat:
+    description: Mutes the Chat
+    permission: smidge.staff
+    aliases: [chatmute, mc, silence]
+  kickall:
+    description: Kicks all players
+    permission: smidge.staff
+  maintenancetoggle:
+    description: Toggles Maintenance Mode
+    permission: smidge.admin
+  About:
+    description: Plugin Description
+    aliases: [plugininfo, didibreakit]
+  PlayerRaffle:
+    description: Chooses a player at random
+    aliases: [raffle, randomplayer]
+  DeFollow:
+    description: Stops you following someone
+    aliases: [unspy, spystop]
+  stats:
+    description: Gets server stats
+    aliases: [serverstats, statistics]
+  Timer:
+    description: Starts a timer
+    aliases: [starttimer, timerstart]
+  Convert:
+    description: Converts a larger unit of time into seconds
+    aliases: [timeconvert, converttime]
+  StopTimer:
+    description: Stops the running timer
+    aliases: [timerstop, stopcurrenttimer, canceltimer, timercancel]
+  togglestreaming:
+    description: Toggles streaming filter
+    aliases: [smidgestream, smidgeisstreaming, streamstart]
+  filterremove:
+    description: Removes Word From the Filters
+    aliases: [removeword, removewordfromfilter]
+  filteradd:
+    description: Adds words to filters
+    aliases: [filterword, addwordtofilter]
+  coinflip:
+    description: Flips a coin
+    aliases: [headsortails, flipcoin]
+  permissions:
+    smidge.staff:
+      descritpion: 'Allows Access To Staff Commands'
+      default: op
+    smidge.admin:
+      descritpion: 'Allows access to Admin Commands'
+      default: op
+    smidge.streamer:
+     description: 'Allows access to Streamer Commands'
+     default: op
+    smidge.spy:
+      description: 'Allows you to monitor other users'
+      default: op
+    smidge.maintenance:
+      description: 'Join During Maintenance'
+      default: op
+    smidge.streaming:
+      description: 'Removes you from Staff Notifications'
+      default: false
+    smidge.filterbypass:
+      description: 'Bypasses Chat Filtering'
+      default: false
+
