@@ -25,6 +25,7 @@ public class StopTimer implements CommandExecutor {
         String cancelAnnounce = ChatColor.translateAlternateColorCodes('&',"&c&l[Smidge] "+"&eThe current timer was cancelled by "+
                 sender.getName());
         sender.sendMessage(cancelled);
+        Config.isTimerRunning.clear();
         for (Player player : Bukkit.getOnlinePlayers()){
             if (player!=sender){
                 player.sendMessage(cancelAnnounce);

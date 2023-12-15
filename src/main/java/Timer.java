@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Timer implements CommandExecutor, TabCompleter {
     int time;
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -32,7 +31,12 @@ public class Timer implements CommandExecutor, TabCompleter {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
             return false;
         }
+        if (!Config.isTimerRunning.isEmpty()){
+            sender.sendMessage(ChatColor.RED+"[Smidge] There is  currently a timer running!");
+            return false;
+        }
         time = Integer.parseInt(args[0]);
+        Config.isTimerRunning.put("Is It?", true);
         Bukkit.getScheduler().runTaskTimer(SmidgeThing.getInstance(), new Runnable() {
             //------------------------------------------------------------------------------//
             @Override
@@ -48,6 +52,7 @@ public class Timer implements CommandExecutor, TabCompleter {
                 if (time == 0) {
                     Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
                     Bukkit.broadcastMessage(timerUp);
+                    Config.isTimerRunning.clear();
                     return;
                 }
                 time--;
@@ -58,8 +63,11 @@ public class Timer implements CommandExecutor, TabCompleter {
                     else if (M!=0){
                         player.sendActionBar("Time Remaining: " + M + " Minutes " + S + " Seconds");
                     }
-                    else {
+                    else if (time>=1) {
                         player.sendActionBar("Time Remaining: " + S+ " Seconds");
+                    }
+                    if (S==1){
+                        player.sendActionBar("Time Remaining: " + S+ " Second");
                     }
                 }
                 // player.sendMessage(String.valueOf(timeleft)); //Debug

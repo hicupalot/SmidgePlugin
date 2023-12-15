@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class stats implements CommandExecutor {
     @Override
@@ -20,7 +21,7 @@ public class stats implements CommandExecutor {
         String intoMessage = ChatColor.translateAlternateColorCodes('&',"&cServer Stats:");
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
         String onlinePlayersMessage = ChatColor.translateAlternateColorCodes('&',"&cCurrently there are &6"+
-                onlinePlayers +" &conline");
+                onlinePlayers +" &cplayers online");
         String verInfo = Bukkit.getVersion();
         String verMessage = ChatColor.translateAlternateColorCodes('&',"&cBukkit Version: " +verInfo);
         long worldSize = Bukkit.getWorldContainer().getTotalSpace()/1000000000; //With commas 1,000,000,000
@@ -35,7 +36,7 @@ public class stats implements CommandExecutor {
         String whitelistedSize = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+whiteListAmount+" &cplayers have been whitelisted");
         String banList = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+banAmount+" &cplayers have been banned");
         String tps = ChatColor.translateAlternateColorCodes('&',"&cCurrent Server TPS is: &6"+tpsCount[0]);
-        String totalT = ChatColor.translateAlternateColorCodes('&',"&cSince Startup There Have been: &6"+totalTicks+" &cticks");
+        String totalT = ChatColor.translateAlternateColorCodes('&',"&cSince Last Restart There Have been: &6"+totalTicks+" &cticks");
         //------------------------------------------Messages Start------------------------------------------------------//
         sender.sendMessage(divider);
         sender.sendMessage(intoMessage);
