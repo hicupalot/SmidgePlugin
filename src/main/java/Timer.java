@@ -36,7 +36,7 @@ public class Timer implements CommandExecutor, TabCompleter {
             return false;
         }
         time = Integer.parseInt(args[0]);
-        Config.isTimerRunning.put("Is It?", true);
+        Config.isTimerRunning.put("Is It Or Not?", true);
         Bukkit.getScheduler().runTaskTimer(SmidgeThing.getInstance(), new Runnable() {
             //------------------------------------------------------------------------------//
             @Override
