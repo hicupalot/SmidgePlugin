@@ -1,14 +1,12 @@
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FilterAdd implements CommandExecutor {
+public class FilterAdd implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
             sender.sendMessage(Config.notPlayerOrConsole);
@@ -26,7 +24,7 @@ public class FilterAdd implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filteradd (word) (filterlist)");
             return false;
         }
-        if (args.length>3){
+        if (args.length > 3) {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filteradd (word) (filterlist)");
             return false;
         }
@@ -41,7 +39,7 @@ public class FilterAdd implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + word + " is already added to the filter!");
             return false;
         }
-        String successMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully added " + "&e"+
+        String successMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully added " + "&e" +
                 word + " &6to the general filter");
         String streamSuccessMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully added " + "&e" +
                 word + " &6to the stream filter");
@@ -61,4 +59,15 @@ public class FilterAdd implements CommandExecutor {
             return true;
         }
     }
+    @Override
+    public java.util.List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 2) {
+            List<String> lists = new ArrayList<>();
+            lists.add("stream");
+            lists.add("general");
+            return lists;
+        }
+        return null;
+    }
 }
+

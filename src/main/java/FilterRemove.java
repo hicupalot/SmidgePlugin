@@ -1,11 +1,9 @@
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilterRemove implements CommandExecutor {
@@ -29,16 +27,16 @@ public class FilterRemove implements CommandExecutor {
             return false;
         }
         String successMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully unfiltered " +
-                "&e"+word);
-            List<String> configList = config.getStringList("general");
-            configList.remove(word);
-            config.set("general", configList);
-            List<String> configList2 = config.getStringList("stream");
-            configList2.remove(word);
-            config.set("stream", configList);
-            SmidgeThing.getInstance().saveConfig();
-            sender.sendMessage(successMessage);
+                "&e" + word);
+        List<String> configList = config.getStringList("general");
+        configList.remove(word);
+        config.set("general", configList);
+        List<String> configList2 = config.getStringList("stream");
+        configList2.remove(word);
+        config.set("stream", configList);
+        SmidgeThing.getInstance().saveConfig();
+        sender.sendMessage(successMessage);
 
         return true;
-        }
     }
+}
