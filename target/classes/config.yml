@@ -1,9 +1,0 @@
-general:
-  - testswear1
-
-stream:
-  - teststream1
-
-isStreaming: false
-
-maintenance: false
