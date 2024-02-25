@@ -24,7 +24,9 @@ public class stats implements CommandExecutor {
                 onlinePlayers +" &cplayers online");
         String verInfo = Bukkit.getVersion();
         String verMessage = ChatColor.translateAlternateColorCodes('&',"&cBukkit Version: " +verInfo);
-        long worldSize = Bukkit.getWorldContainer().getTotalSpace()/1000000000; //With commas 1,000,000,000
+        long totalSize = Bukkit.getWorldContainer().getTotalSpace()/1000000000; //With commas 1,000,000,000
+        long freeSpace = Bukkit.getWorldContainer().getUsableSpace()/1000000000;
+        long worldSize = totalSize-freeSpace;
         String worldData = ChatColor.translateAlternateColorCodes('&',"&cThe World Is Currently: &6"+worldSize+"&cgb" );
         int totalPlayers = Bukkit.getOfflinePlayers().length;
         String divider = ChatColor.translateAlternateColorCodes('&',"&c-----------------------------");
