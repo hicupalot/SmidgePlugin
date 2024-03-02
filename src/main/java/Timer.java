@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.sql.Time;
@@ -15,6 +16,7 @@ public class Timer implements CommandExecutor, TabCompleter {
     int time;
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        FileConfiguration config = SmidgeThing.getInstance().getConfig();
         if (!(sender instanceof Player)) {
             sender.sendMessage(Config.notPlayer);
             return false;
@@ -31,12 +33,13 @@ public class Timer implements CommandExecutor, TabCompleter {
             sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
             return false;
         }
-        if (!Config.isTimerRunning.isEmpty()){
-            sender.sendMessage(ChatColor.RED+"[Smidge] There is  currently a timer running!");
+        if (config.getBoolean("timer",true)){
+            sender.sendMessage(ChatColor.RED+"[Smidge] There is currently a timer running!");
             return false;
         }
         time = Integer.parseInt(args[0]);
-        Config.isTimerRunning.put("Is It Or Not?", true);
+        config.set("timer", true);
+        SmidgeThing.getInstance().saveConfig();
         Bukkit.getScheduler().runTaskTimer(SmidgeThing.getInstance(), new Runnable() {
             //------------------------------------------------------------------------------//
             @Override
@@ -52,7 +55,8 @@ public class Timer implements CommandExecutor, TabCompleter {
                 if (time == 0) {
                     Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
                     Bukkit.broadcastMessage(timerUp);
-                    Config.isTimerRunning.clear();
+                    config.set("timer",false);
+                    SmidgeThing.getInstance().saveConfig();
                     return;
                 }
                 time--;

@@ -7,3 +7,7 @@ stream:
 isStreaming: false
 
 maintenance: false
+
+chatMuted: false
+
+timer: false
