@@ -1,4 +1,3 @@
-import net.luckperms.api.model.user.UserManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
