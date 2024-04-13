@@ -17,7 +17,7 @@ public class Filter implements Listener {
                 if (config.getList("general").contains(word)) {
                     e.setCancelled(true);
                     String staffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&ESMIDGEFILTER&c] "
-                            + player.getName() + "said " + word + " this word is in the general filter!");
+                            + player.getName() + " said " + word + " this word is in the general filter!");
                     String playerMessage = ChatColor.translateAlternateColorCodes('&', "&c[&eSMIDGEFILTER&c] You cannot say " +
                             word + " &con this server!");
                     player.sendMessage(playerMessage);
