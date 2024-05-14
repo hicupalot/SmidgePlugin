@@ -14,8 +14,10 @@ public class CoinFlip implements CommandExecutor {
             sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
-
-
+        if (!sender.hasPermission("smidge.admin")) {
+            sender.sendMessage(Config.noPermission);
+            return false;
+        }
         int headsOrTails = new Random().nextInt(2);
         if (headsOrTails == 1) {
             String heads = ChatColor.translateAlternateColorCodes('&',
