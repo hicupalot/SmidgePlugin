@@ -1,3 +1,4 @@
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,12 +22,18 @@ public class ToggleStreamMode implements CommandExecutor {
             if (!Config.streamMode.containsKey(playerUUID)) {
                 Config.streamMode.put(playerUUID, true);
                 sender.sendMessage(Config.streamAdd);
+                if (Config.adminToggle.containsKey(playerUUID) || Config.staffToggle.containsKey(playerUUID)) {
+                    Config.adminToggle.remove(playerUUID);
+                    Config.staffToggle.remove(playerUUID);
+                    String toggleRemoval = ChatColor.translateAlternateColorCodes('&', "&cYou were removed from staff channels!");
+                    sender.sendMessage(toggleRemoval);
+                }
+                return true;
+            } else {
+                Config.streamMode.remove(playerUUID);
+                sender.sendMessage(Config.streamRemove);
                 return true;
             }
-
-        } else
-             Config.streamMode.remove(playerUUID);
-            sender.sendMessage(Config.streamRemove);
-            return true;
         }
+   return false; }
 }

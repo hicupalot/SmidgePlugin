@@ -19,6 +19,11 @@ public class ToggleAdminChat implements CommandExecutor {
             sender.sendMessage(Config.noPermission);
             return false;
         }
+        if (Config.streamMode.containsKey(((Player) sender).getUniqueId())) {
+            String streamModeDenial = ChatColor.translateAlternateColorCodes('&', "&cYou are currently in Streaming Mode, you cannot enable admin chat");
+            sender.sendMessage(streamModeDenial);
+            return false;
+        }
         UUID playerUUID = ((Player) sender).getUniqueId();
         if (args.length < 1) {
             if (!Config.adminToggle.containsKey(playerUUID)) {

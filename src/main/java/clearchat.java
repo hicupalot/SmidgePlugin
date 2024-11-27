@@ -27,7 +27,7 @@ public class clearchat implements CommandExecutor {
 
         }
         String StaffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&eSTAFF&c] &eChat was cleared by " + sender.getName())
-                + "but you are immune, YIPPEE";
+                + " but you are immune, YIPPEE";
         String NonStaffBroadcast = ChatColor.translateAlternateColorCodes('&', "&cThe chat was cleared by Staff");
 
         for (Player staff : Bukkit.getOnlinePlayers()) {

@@ -18,8 +18,12 @@ public class AdminChat implements Listener {
         if (Config.adminToggle.containsKey(playerUUID)) {
         String colorMessage = ChatColor.translateAlternateColorCodes('&', chatMessage);
             String name = ChatColor.translateAlternateColorCodes('&', "&4"+e.getPlayer().getDisplayName());
-            Bukkit.broadcast(Config.adminPrefix + " "
-                    + name + ": " + ChatColor.GOLD+ colorMessage, "smidge.admin");
+            String AdminChatMessages = ChatColor.translateAlternateColorCodes('&',"&c[&4ADMIN&c] " + name + ": " + ChatColor.GOLD + colorMessage);
+            for (Player admins : Bukkit.getOnlinePlayers()) {
+                if (admins.hasPermission("smidge.admin") && !Config.streamMode.containsKey(admins.getUniqueId())) {
+                    admins.sendMessage(AdminChatMessages);
+                }
+            }
             e.setCancelled(true);
         }
     }

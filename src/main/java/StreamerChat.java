@@ -18,11 +18,13 @@ public class StreamerChat implements Listener {
         String colorMessage = ChatColor.translateAlternateColorCodes('&', chatMessage);
         if (Config.streamerToggle.containsKey(playerUUID)) {
             String name = ChatColor.translateAlternateColorCodes('&', "&9"+e.getPlayer().getDisplayName());
-            Bukkit.broadcast(Config.streamerPrefix + " "
-                    + name + ": " +
-                    ChatColor.LIGHT_PURPLE + colorMessage, "smidge.streamer");
-            e.setCancelled(true);
-        }
+            String StreamerChatMessages = ChatColor.translateAlternateColorCodes('&',"&e[&cSTAFF&e] " + name + ": " + ChatColor.GOLD + colorMessage);
+            for (Player streamer : Bukkit.getOnlinePlayers()) {
+                if (streamer.hasPermission("smidge.streamer"))
+                    streamer.sendMessage(StreamerChatMessages);
+                }
+            }
+        
     }
 
     @EventHandler
