@@ -8,6 +8,7 @@ public class Config {
         public static final HashMap<UUID, Boolean> staffToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID,Boolean>  adminToggle = new HashMap<UUID,Boolean>();
         public static final HashMap<UUID, Boolean> streamerToggle = new HashMap<UUID, Boolean>();
+        public static final HashMap<UUID, Boolean> streamMode = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Boolean> petDeathToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Location> originalLocation = new HashMap<>();
         //DEFAULT MESSAGES
@@ -31,6 +32,10 @@ public class Config {
             "&e[&9STREAMER&e] &9ENABLED");
         public static final String adminAdd = ChatColor.translateAlternateColorCodes('&',
             "&e[&4ADMINCHAT&e] &4ENABLED");
+    public static final String streamAdd = ChatColor.translateAlternateColorCodes('&',
+            "&c[&aSTREAM MODE&a] &cENABLED");
+    public static final String streamRemove = ChatColor.translateAlternateColorCodes('&',
+            "&c[&aSTREAM MODE&c] &aDISABLED");
 
         //
 

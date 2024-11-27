@@ -1,5 +1,5 @@
 name: SmidgeThing
-version: 1.5
+version: 1.55
 main: SmidgeThing
 api-version: 1.21
 author: hicupalot
@@ -72,6 +72,9 @@ commands:
   coinflip:
     description: Flips a coin
     aliases: [headsortails, flipcoin]
+  ToggleStreamMode:
+    description: Removes you from staff broadcasts
+    aliases: [recording, streaming, imlive]
   permissions:
     smidge.staff:
       descritpion: 'Allows Access To Staff Commands'

@@ -18,11 +18,28 @@ public class clearchat implements CommandExecutor {
             sender.sendMessage(Config.noPermission);
             return false;
         }
-        for (int i = 0; i < 200; i++) {
-            Bukkit.broadcastMessage("");
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!player.hasPermission("smidge.staff") || Config.streamMode.containsKey(player.getUniqueId())) {
+                for (int i = 0; i<200; i++){
+                    player.sendMessage("");
+                }
+            }
+
         }
-        String broadCast = ChatColor.translateAlternateColorCodes('&', "&c[&eSTAFF&c] &eChat was cleared by " + sender.getName());
-        Bukkit.broadcastMessage(broadCast);
+        String StaffBroadcast = ChatColor.translateAlternateColorCodes('&', "&c[&eSTAFF&c] &eChat was cleared by " + sender.getName())
+                + "but you are immune, YIPPEE";
+        String NonStaffBroadcast = ChatColor.translateAlternateColorCodes('&', "&cThe chat was cleared by Staff");
+
+        for (Player staff : Bukkit.getOnlinePlayers()) {
+            if (staff.hasPermission("smidge.staff") && !Config.streamMode.containsKey(staff.getUniqueId())) {
+                staff.sendMessage(StaffBroadcast);
+            }
+            for (Player nonStaff : Bukkit.getOnlinePlayers()) {
+                if (!nonStaff.hasPermission("smidge.staff") || Config.streamMode.containsKey(nonStaff.getUniqueId())) {
+                    nonStaff.sendMessage(NonStaffBroadcast);
+                }
+            }
+        }
         return true;
     }
 }

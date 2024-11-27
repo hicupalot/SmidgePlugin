@@ -45,6 +45,7 @@ public final class SmidgeThing extends JavaPlugin {
         getCommand("filteradd").setExecutor(new FilterAdd());
         getCommand("filterremove").setExecutor(new FilterRemove());
         getCommand("coinflip").setExecutor(new CoinFlip());
+        getCommand("ToggleStreamMode").setExecutor(new ToggleStreamMode());
     }
     @Override
     public void onDisable() {

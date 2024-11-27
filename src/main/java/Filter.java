@@ -22,7 +22,7 @@ public class Filter implements Listener {
                             word + " &con this server!");
                     player.sendMessage(playerMessage);
                     for (Player player1 : Bukkit.getOnlinePlayers()) {
-                        if (player1.hasPermission("smidge.staff") && !player1.hasPermission("smidge.streaming")) {
+                        if (player1.hasPermission("smidge.staff") && !Config.streamMode.containsKey(player1.getUniqueId())) {
                             player1.sendMessage(staffBroadcast);
                             //Possibly could use DiscordSRV
                         }
