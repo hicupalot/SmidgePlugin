@@ -52,7 +52,9 @@ public class Timer implements CommandExecutor, TabCompleter {
                         "&6The Timer Is Up!");
                 if (time == 0) {
                     Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
-                    Bukkit.broadcastMessage(timerUp);
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        player.sendMessage(timerUp);
+                    }
                     config.set("timer",false);
                     SmidgeThing.getInstance().saveConfig();
                     return;

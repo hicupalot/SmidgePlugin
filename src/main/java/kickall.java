@@ -27,12 +27,15 @@ public class kickall implements CommandExecutor {
             }
             if (kickcount > 0) {
                 String kicknotif = ChatColor.translateAlternateColorCodes('&',
-                        "&cKicked " + kickcount + " &cplayers from the server");
-                Bukkit.broadcastMessage(kicknotif);
+                          kickcount + " &cwere kicked from the server by " + sender.getName());
+                for (Player unKicked : Bukkit.getOnlinePlayers()) {
+                    unKicked.sendMessage(kicknotif);
+                }
+
             } else {
                 String kickfail = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] " +
                         "&cThis failed as there are no other non-staff players");
-                Bukkit.broadcastMessage(kickfail);
+                sender.sendMessage(kickfail);
             }
         }
         return true;

@@ -24,7 +24,9 @@ public class mutechat implements CommandExecutor {
             if (!config.getBoolean("chatMuted")) {
                 String mutealert = ChatColor.translateAlternateColorCodes('&',
                         "&cThe Chat Has Been Muted");
-                Bukkit.broadcastMessage(mutealert);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendMessage(mutealert);
+                }
                 config.set("chatMuted", true);
                 SmidgeThing.getInstance().saveConfig();
             }
@@ -32,7 +34,9 @@ public class mutechat implements CommandExecutor {
                             config.set("chatMuted",false);
                 SmidgeThing.getInstance().saveConfig();
                             String alert = ChatColor.translateAlternateColorCodes('&', "&bThe Chat Has Been Unmuted");
-                            Bukkit.broadcastMessage(alert);
+                            for(Player player : Bukkit.getOnlinePlayers()){
+                                player.sendMessage(alert);
+                            }
                         }
                     return true;
                 }

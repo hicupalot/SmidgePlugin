@@ -22,13 +22,18 @@ public class maintenancetoggle implements CommandExecutor {
         if (!config.getBoolean("maintenance")){
             config.set("maintenance",true);
             String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Enabled");
-            Bukkit.broadcastMessage(maintenanceMessage);
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendMessage(maintenanceMessage);
+            }
+
             SmidgeThing.getInstance().saveConfig();
         }
         else{
             config.set("maintenance",false);
             String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Disabled");
-            Bukkit.broadcastMessage(maintenanceMessage);
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendMessage(maintenanceMessage);
+            }
             SmidgeThing.getInstance().saveConfig();
         }
     return true;

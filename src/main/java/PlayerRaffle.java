@@ -35,13 +35,17 @@ public class PlayerRaffle implements CommandExecutor {
                 "&cThe Winner of the Raffle Is...");
         String rafflePlayerWinnerAlert = ChatColor.translateAlternateColorCodes('&',
                 "&d" + raffleWinner.getDisplayName() + "&6 Congratulate Them!");
-        Bukkit.broadcastMessage(raffleWinnerAlert);
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(raffleWinnerAlert);
+        }
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Bukkit.broadcastMessage(rafflePlayerWinnerAlert);
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(rafflePlayerWinnerAlert);
+        }
         return true;
     }
 }
