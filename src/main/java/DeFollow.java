@@ -1,3 +1,4 @@
+import de.myzelyam.api.vanish.VanishAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -31,6 +32,13 @@ public class DeFollow implements CommandExecutor, Listener {
             ((Player) sender).teleport(playerLoc);
             ((Player) sender).setGameMode(GameMode.CREATIVE);
             sender.sendMessage(teleportConfirmation);
+        }
+        if (!Config.vanishState.containsKey(((Player) sender).getUniqueId())) {
+            VanishAPI.showPlayer(((Player) sender));
+            Config.vanishState.remove(((Player) sender).getUniqueId(), true);
+        }
+        else if (Config.vanishState.get(((Player) sender).getUniqueId())){
+            VanishAPI.hidePlayer(((Player) sender));
         }
         return true;
     }

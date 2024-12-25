@@ -11,6 +11,7 @@ public class Config {
         public static final HashMap<UUID, Boolean> streamMode = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Boolean> petDeathToggle = new HashMap<UUID, Boolean>();
         public static final HashMap<UUID, Location> originalLocation = new HashMap<>();
+        public static final HashMap<UUID,Boolean> vanishState = new HashMap<>();
         //DEFAULT MESSAGES
         public static final String noPermission = ChatColor.translateAlternateColorCodes('&',
                 "&c[Smidge] You do not have permission");

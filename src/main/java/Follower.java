@@ -35,12 +35,19 @@ public class Follower implements CommandExecutor, TabCompleter {
                 return false;
             } else {
                 Config.originalLocation.put(((Player) sender).getUniqueId(), ((Player) sender).getLocation());
+                if(VanishAPI.isInvisible(((Player) sender).getPlayer())){
+                    Config.vanishState.put(((Player) sender).getUniqueId(), true);
+                }
+                else if (!VanishAPI.isInvisible(((Player) sender).getPlayer())){
+                    return true;
+                }
                 VanishAPI.hidePlayer((Player) sender);
                 ((Player) sender).setGameMode(GameMode.SPECTATOR);
                 ((Player) sender).teleport(target);
                 sender.sendMessage(ChatColor.GOLD + "[Smidge] You are now monitoring " + target.getDisplayName());
-                return true;
             }
+            return true;
+
         }
         return true;
     }

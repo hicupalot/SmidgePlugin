@@ -1,5 +1,5 @@
 name: SmidgeThing
-version: 1.55
+version: 1.6
 main: SmidgeThing
 api-version: 1.21
 author: hicupalot
@@ -47,7 +47,7 @@ commands:
     aliases: [raffle, randomplayer]
   DeFollow:
     description: Stops you following someone
-    aliases: [unspy, spystop]
+    aliases: [unspy, spystop, unfollow]
   stats:
     description: Gets server stats
     aliases: [serverstats, statistics]
