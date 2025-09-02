@@ -7,6 +7,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
+import java.util.Formatter;
+
 public class stats implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -34,11 +37,18 @@ public class stats implements CommandExecutor {
         int banAmount = Bukkit.getBannedPlayers().size();
         int whiteListAmount = Bukkit.getWhitelistedPlayers().size();
         double[] tpsCount = Bukkit.getTPS();
+        Formatter cleanedUpTPS = new Formatter();
+        cleanedUpTPS.format("%.2f", tpsCount[0]);
         int totalTicks = Bukkit.getCurrentTick();
+        int time = totalTicks/20;
+        int seconds = time;
+        int S = seconds % 60;
+        int H = seconds / 60;
+        int M = H % 60;
         String whitelistedSize = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+whiteListAmount+" &cplayers have been whitelisted");
         String banList = ChatColor.translateAlternateColorCodes('&',"&cIn total &6"+banAmount+" &cplayers have been banned");
-        String tps = ChatColor.translateAlternateColorCodes('&',"&cCurrent Server TPS is: &6"+tpsCount[0]);
-        String totalT = ChatColor.translateAlternateColorCodes('&',"&cSince Last Restart There Have been: &6"+totalTicks+" &cticks");
+        String tps = ChatColor.translateAlternateColorCodes('&',"&cCurrent Server TPS is: &6"+ cleanedUpTPS);
+        String totalT = ChatColor.translateAlternateColorCodes('&',"&cTime Since Last Restart: " + H + " Hours " + M + " Minutes " + S + " Seconds");
         //------------------------------------------Messages Start------------------------------------------------------//
         sender.sendMessage(divider);
         sender.sendMessage(intoMessage);
