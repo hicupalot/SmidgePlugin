@@ -1,5 +1,5 @@
-name: SmidgeThing
-version: 1.6
+name: SmidgePlugin
+version: 1.9
 main: SmidgeThing
 api-version: 1.21
 author: hicupalot

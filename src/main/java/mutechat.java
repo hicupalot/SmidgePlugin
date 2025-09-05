@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -22,10 +24,9 @@ public class mutechat implements CommandExecutor {
                 return false;
             }
             if (!config.getBoolean("chatMuted")) {
-                String mutealert = ChatColor.translateAlternateColorCodes('&',
-                        "&cThe Chat Has Been Muted");
+                Component muteAlert = Component.text("The Chat Has Been Muted").color(TextColor.color(254,63,63));
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.sendMessage(mutealert);
+                    player.sendMessage(muteAlert);
                 }
                 config.set("chatMuted", true);
                 SmidgeThing.getInstance().saveConfig();
@@ -33,7 +34,7 @@ public class mutechat implements CommandExecutor {
             else if (config.getBoolean("chatMuted")){
                             config.set("chatMuted",false);
                 SmidgeThing.getInstance().saveConfig();
-                            String alert = ChatColor.translateAlternateColorCodes('&', "&bThe Chat Has Been Unmuted");
+                Component alert = Component.text("The Chat Has Been Unmuted").color(TextColor.color(63,254,254));
                             for(Player player : Bukkit.getOnlinePlayers()){
                                 player.sendMessage(alert);
                             }

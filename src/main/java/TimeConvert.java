@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,28 +22,33 @@ public class TimeConvert implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /convert (time) (units)");
+            Component usage = Component.text("[Smidge] Command Usage /convert (time) (units)").color(TextColor.color(190,0,0));
+            sender.sendMessage(usage);
             return false;
         }
         if (args.length == 1) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Please enter the unit you wish to convert to seconds");
+            Component time = Component.text("[Smidge] Please enter the unit you wish to convert to seconds").color(TextColor.color(190,0,0));
+            sender.sendMessage(time);
             return false;
         }
         int time = Integer.parseInt(args[0]);
         String units = args[1];
 
         if (units.equalsIgnoreCase("minutes")) {
-            sender.sendMessage(ChatColor.GOLD + "[Smidge] In seconds " + time + " minutes is " + (time * 60) + " seconds");
+            Component minutes = Component.text("[Smidge] In seconds" + time + " minutes is " + (time*60) + " seconds").color(TextColor.color(217,163,52));
+            sender.sendMessage(minutes);
             return false;
         }
 
         if (units.equalsIgnoreCase("hours")) {
-            sender.sendMessage(ChatColor.GOLD + "[Smidge] In seconds " + time + " hours is " + ((time * 60)*60) + " seconds");
+            Component hours = Component.text("[Smidge] In seconds" + time + " hours is " + ((time*60)*60) + " seconds").color(TextColor.color(217,163,52));
+            sender.sendMessage(hours);
             return false;
         }
 
         if (units.equalsIgnoreCase("days")) {
-            sender.sendMessage(ChatColor.GOLD + "[Smidge] In seconds " + time + " days is " + (((time * 24)*60)*60) + " seconds");
+            Component days = Component.text("[Smidge] In seconds" + time + " days is " + (((time*24)*60)*60) + " seconds").color(TextColor.color(217,163,52));
+            sender.sendMessage(days);
             return false;
         }
         return true;

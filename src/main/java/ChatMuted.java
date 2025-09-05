@@ -1,3 +1,4 @@
+import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -7,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatMuted implements Listener {
     @EventHandler
-    public void onChatMutedMessageSend(AsyncPlayerChatEvent e) {
+    public void onChatMutedMessageSend(AsyncChatEvent e) {
         FileConfiguration config = SmidgeThing.getInstance().getConfig();
         if (config.getBoolean("chatMuted", true)) {
             Player player = e.getPlayer();

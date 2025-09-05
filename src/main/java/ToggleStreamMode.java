@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +15,7 @@ public class ToggleStreamMode implements CommandExecutor {
             sender.sendMessage(Config.notPlayer);
             return false;
         }
-        if (!sender.hasPermission("smidge.staff") || !sender.hasPermission("smidge.admin")) {
+        if (!sender.hasPermission("smidge.staff") || !sender.hasPermission("smidge.admin") || !sender.hasPermission("smidge.streamer")) {
             sender.sendMessage(Config.noPermission);
             return false;
         }
@@ -25,7 +27,7 @@ public class ToggleStreamMode implements CommandExecutor {
                 if (Config.adminToggle.containsKey(playerUUID) || Config.staffToggle.containsKey(playerUUID)) {
                     Config.adminToggle.remove(playerUUID);
                     Config.staffToggle.remove(playerUUID);
-                    String toggleRemoval = ChatColor.translateAlternateColorCodes('&', "&cYou were removed from staff channels!");
+                    Component toggleRemoval = Component.text("You were removed from staff channels!").color(TextColor.color(254,63,63));
                     sender.sendMessage(toggleRemoval);
                 }
                 return true;

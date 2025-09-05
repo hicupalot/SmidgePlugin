@@ -15,7 +15,7 @@ public class ToggleStreamerChat implements CommandExecutor {
             sender.sendMessage(Config.notPlayer);
             return false;
         }
-        if (!sender.hasPermission("smidge.streamer")) {
+        if (!sender.hasPermission("smidge.staff") || !sender.hasPermission("smidge.admin") || !sender.hasPermission("smidge.streamer")) {
             sender.sendMessage(Config.noPermission);
             return false;
         }

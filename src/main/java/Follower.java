@@ -1,4 +1,6 @@
 import de.myzelyam.api.vanish.VanishAPI;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -23,15 +25,18 @@ public class Follower implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /spy (player)");
+            Component noFollow = Component.text("[Smidge] Command Usage /spy (player)").color(TextColor.color(254,63,63));
+            sender.sendMessage(noFollow);
         } else {
             Player target = Bukkit.getPlayerExact(args[0]);
             if (target == null) {
-                sender.sendMessage(ChatColor.RED + "[Smidge] This is not an online player");
+                Component notOnline = Component.text("[Smidge] This is not a online player!").color(TextColor.color(254,63,63));
+                sender.sendMessage(notOnline);
                 return false;
             }
             if (((Player) sender).getUniqueId().equals(target.getUniqueId())) {
-                sender.sendMessage(ChatColor.RED + "[Smidge] You cannot spy on yourself!");
+                Component notYourself = Component.text("[Smidge] You cannot spy on yourself!!").color(TextColor.color(254,63,63));
+                sender.sendMessage(notYourself);
                 return false;
             } else {
                 Config.originalLocation.put(((Player) sender).getUniqueId(), ((Player) sender).getLocation());
@@ -44,7 +49,8 @@ public class Follower implements CommandExecutor, TabCompleter {
                 VanishAPI.hidePlayer((Player) sender);
                 ((Player) sender).setGameMode(GameMode.SPECTATOR);
                 ((Player) sender).teleport(target);
-                sender.sendMessage(ChatColor.GOLD + "[Smidge] You are now monitoring " + target.getDisplayName());
+                Component monitoring = Component.text("[Smidge] You are now monitoring " + target.getName()).color(TextColor.color(217,163,52));
+                sender.sendMessage(monitoring);
             }
             return true;
 
@@ -58,8 +64,8 @@ public class Follower implements CommandExecutor, TabCompleter {
             List<String> playerNames = new ArrayList<>();
             Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().size()];
             Bukkit.getServer().getOnlinePlayers().toArray(players);
-            for (int i = 0; i < players.length; i++) {
-                playerNames.add(players[i].getName());
+            for (Player player : players) {
+                playerNames.add(player.getName());
             }
 
             return playerNames;

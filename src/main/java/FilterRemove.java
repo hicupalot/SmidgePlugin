@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -17,13 +19,15 @@ public class FilterRemove implements CommandExecutor {
             return false;
         }
         if (args.length > 1) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filterremove (word) (filterlist)");
+            Component usage = Component.text("[Smidge] Command Usage /filterremove (word) (filterlist)").color(TextColor.color(190,0,0));
+            sender.sendMessage(usage);
             return false;
         }
         String word = args[0].toLowerCase();
         FileConfiguration config = SmidgeThing.getInstance().getConfig();
         if (!config.getList("general").contains(word) && !config.getList("stream").contains(word)) {
-            sender.sendMessage(ChatColor.RED + word + " isn't currently filtered!");
+            Component usage = Component.text(word + " isn't currently filtered").color(TextColor.color(190,0,0));
+            sender.sendMessage(usage);
             return false;
         }
         String successMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully unfiltered " +

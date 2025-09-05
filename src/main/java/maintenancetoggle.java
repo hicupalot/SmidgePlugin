@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -21,7 +23,7 @@ public class maintenancetoggle implements CommandExecutor {
         }
         if (!config.getBoolean("maintenance")){
             config.set("maintenance",true);
-            String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Enabled");
+            Component maintenanceMessage = Component.text("Maintenance Mode Enabled").color(TextColor.color(254,63,63));
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendMessage(maintenanceMessage);
             }
@@ -30,7 +32,7 @@ public class maintenancetoggle implements CommandExecutor {
         }
         else{
             config.set("maintenance",false);
-            String maintenanceMessage = ChatColor.translateAlternateColorCodes('&', "&cMaintenance Mode Disabled");
+            Component maintenanceMessage = Component.text("Maintenance Mode Disabled").color(TextColor.color(254,63,63));
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendMessage(maintenanceMessage);
             }

@@ -1,4 +1,6 @@
 import de.myzelyam.api.vanish.VanishAPI;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -13,8 +15,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class DeFollow implements CommandExecutor, Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        String teleportConfirmation = ChatColor.translateAlternateColorCodes('&',
-                "&6[Smidge]: You were teleported back to your previous position");
+        Component teleportConfirmation = Component.text("[Smidge] You were teleported back to your previous position").color(TextColor.color(217,163,52));
         if (!(sender instanceof Player)) {
             sender.sendMessage(Config.notPlayer);
             return false;
@@ -24,7 +25,7 @@ public class DeFollow implements CommandExecutor, Listener {
             return false;
         }
         if (!Config.originalLocation.containsKey(((Player) sender).getUniqueId())){
-            String noFollow = ChatColor.translateAlternateColorCodes('&',"&cYou aren't currently following anyone!");
+            Component noFollow = Component.text("You aren't currently following anyone!").color(TextColor.color(254,63,63));
             sender.sendMessage(noFollow);
             return false;
         } else {

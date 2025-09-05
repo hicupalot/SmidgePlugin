@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,7 +21,8 @@ public class StopTimer implements CommandExecutor {
             return false;
         }
         if (args.length > 0) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage: /stoptimer");
+            Component usage = Component.text("[Smidge] Command Usage /stoptimer").color(TextColor.color(190,0,0));
+            sender.sendMessage(usage);
             return false;
         }
         if (!config.getBoolean("timer")){

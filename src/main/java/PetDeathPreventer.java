@@ -17,7 +17,7 @@ public class PetDeathPreventer implements Listener {
         //Entity = Entity being damaged
         if (!e.getDamager().getType().equals(EntityType.PLAYER)
                 && !e.getEntity().getType().equals(EntityType.PLAYER)) {
-            if (e.getEntity().getCustomName() != null) {
+            if (e.getEntity().getCustomName()!= null) {
                 e.setCancelled(true);
                 return;
             }

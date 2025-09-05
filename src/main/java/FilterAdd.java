@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,7 +10,9 @@ import java.util.List;
 
 public class FilterAdd implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        Component usage = Component.text("[Smidge] Command Usage /filteradd (word) (filterlist)").color(TextColor.color(190,0,0));
         if (!(sender instanceof Player) && !(sender instanceof ConsoleCommandSender)) {
+
             sender.sendMessage(Config.notPlayerOrConsole);
             return false;
         }
@@ -17,26 +21,28 @@ public class FilterAdd implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filteradd (word) (filterlist)");
+            sender.sendMessage(usage);
             return false;
         }
         if (args.length == 1) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filteradd (word) (filterlist)");
+            sender.sendMessage(usage);
             return false;
         }
         if (args.length > 3) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /filteradd (word) (filterlist)");
+            sender.sendMessage(usage);
             return false;
         }
         String word = args[0].toLowerCase();
         String filterlist = args[1].toLowerCase();
         FileConfiguration config = SmidgeThing.getInstance().getConfig();
         if (!filterlist.equals("general") && !filterlist.equals("stream")) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] The filter list should be either 'general' or 'stream'");
+            Component filterList = Component.text("[Smidge] The filter list should be either 'general' or 'stream'").color(TextColor.color(190,0,0));
+            sender.sendMessage(filterList);
             return false;
         }
         if (config.getList("general").contains(word) || config.getList("stream").contains(word)) {
-            sender.sendMessage(ChatColor.RED + word + " is already added to the filter!");
+            Component alreadyAdded = Component.text(word + " is already added to the filter!").color(TextColor.color(190,0,0));
+            sender.sendMessage(alreadyAdded);
             return false;
         }
         String successMessage = ChatColor.translateAlternateColorCodes('&', "&6[Smidge] Successfully added " + "&e" +

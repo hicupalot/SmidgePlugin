@@ -1,3 +1,7 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.format.TextFormat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,7 +18,7 @@ import java.util.Locale;
 public class Timer implements CommandExecutor, TabCompleter {
     int time;
     String unit;
-
+    Component usage = Component.text("[Smidge] Command Usage /starttimer (amount) (timeunit)").color(TextColor.color(190,0,0));
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         FileConfiguration config = SmidgeThing.getInstance().getConfig();
@@ -27,15 +31,16 @@ public class Timer implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
+            sender.sendMessage(usage);
             return false;
         }
         if (args.length > 2) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] Command Usage /starttimer (seconds)");
+            sender.sendMessage(usage);
             return false;
         }
         if (config.getBoolean("timer", true)) {
-            sender.sendMessage(ChatColor.RED + "[Smidge] There is currently a timer running!");
+            Component timerAlreadyRunning = Component.text("[Smidge] There is currently a timer running!").color(TextColor.color(190,0,0));
+            sender.sendMessage(timerAlreadyRunning);
             return false;
         }
             time = Integer.parseInt(args[0]);
@@ -50,7 +55,8 @@ public class Timer implements CommandExecutor, TabCompleter {
             time = time * 3600;
         }
         else{
-            sender.sendMessage(ChatColor.RED + "[Smidge] Please Use Valid Units");
+            Component validUnits = Component.text("[Smidge] Please Use Valid Units").color(TextColor.color(190,0,0));
+            sender.sendMessage(validUnits);
             return false;
         }
             config.set("timer", true);
@@ -59,18 +65,18 @@ public class Timer implements CommandExecutor, TabCompleter {
                 //------------------------------------------------------------------------------//
                 @Override
                 public void run() {
-                    int timeleft = time;
-                    int seconds = timeleft;
+                    int seconds = time;
                     int S = seconds % 60;
                     int H = seconds / 60;
                     int M = H % 60;
                     H = H / 60;
-                    String timerUp = ChatColor.translateAlternateColorCodes('&', "&6&l[Smidge] " +
-                            "&6The Timer Is Up!");
+                    Component timeUp = Component.text().append(Component.text("[Smidge] ").color(TextColor.color(217,163,52))
+                            .append(Component.text("The Timer Is Up!").color(TextColor.color(217,163,52)))).build();
+
                     if (time == 0) {
                         Bukkit.getScheduler().cancelTasks(SmidgeThing.getInstance());
                         for (Player player : Bukkit.getOnlinePlayers()) {
-                            player.sendMessage(timerUp);
+                            player.sendMessage(timeUp);
                         }
                         config.set("timer", false);
                         SmidgeThing.getInstance().saveConfig();
@@ -79,15 +85,22 @@ public class Timer implements CommandExecutor, TabCompleter {
                     time--;
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (H != 0) {
-                            player.sendActionBar("Time Remaining: " + H + " Hours " + M + " Minutes " + S + " Seconds");
+                            Component whenHoursLeft = Component.text().append(Component.text("Time Remaining: ").append(Component.text(H).
+                                            append(Component.text(" Hours").append(Component.text(M).append(Component.text(" Minutes"))
+                                                    .append(Component.text(S)).append(Component.text(" Seconds")))))).build();
+                            player.sendActionBar(whenHoursLeft);
                         } else if (M != 0) {
-                            player.sendActionBar("Time Remaining: " + M + " Minutes " + S + " Seconds");
+                            Component whenMinutesLeft = Component.text().append(Component.text("Time Remaining: ").
+                                    append(Component.text(M).append(Component.text(" Minutes"))
+                                            .append(Component.text(S)).append(Component.text(" Seconds")))).build();
+                            player.sendActionBar(whenMinutesLeft);
                         } else if (time >= 1) {
-                            player.sendActionBar("Time Remaining: " + S + " Seconds");
+                            Component whenSeconds = Component.text().append(Component.text("Time Remaining: ").append(Component.text(S)).append(Component.text(" Seconds"))).build();
+                            player.sendActionBar(whenSeconds);
                         }
                         if (time == 0) {
-                            player.sendActionBar("Time Remaining: " + S + " Second");
-                        }
+                            Component whenSeconds = Component.text().append(Component.text("Time Remaining: ").append(Component.text(S)).append(Component.text(" Second"))).build();
+                            player.sendActionBar(whenSeconds);}
                     }
                     // player.sendMessage(String.valueOf(timeleft)); //Debug
                 }

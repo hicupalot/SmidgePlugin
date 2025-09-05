@@ -1,3 +1,5 @@
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,22 +22,19 @@ public class kickall implements CommandExecutor {
         int kickcount = 0;
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!player.hasPermission("smidge.staff")) {
-                String kickReason = ChatColor.translateAlternateColorCodes('&',
-                        "&cYou were kicked from the Server");
-                player.kickPlayer(kickReason);
+                Component kickReason = Component.text("You were kicked from the Server").color(TextColor.color(254,63,63));
+                player.kick(kickReason);
                 kickcount++;
             }
             if (kickcount > 0) {
-                String kicknotif = ChatColor.translateAlternateColorCodes('&',
-                          kickcount + " &cwere kicked from the server by " + sender.getName());
+                Component kickNotIf = Component.text(kickcount + " were kicked from the server by " + sender.getName()).color(TextColor.color(254,63,63));
                 for (Player unKicked : Bukkit.getOnlinePlayers()) {
-                    unKicked.sendMessage(kicknotif);
+                    unKicked.sendMessage(kickNotIf);
                 }
 
             } else {
-                String kickfail = ChatColor.translateAlternateColorCodes('&', "&c[Smidge] " +
-                        "&cThis failed as there are no other non-staff players");
-                sender.sendMessage(kickfail);
+                Component kickFail = Component.text("[Smidge] This failed as there are no other non-staff players").color(TextColor.color(254,63,63));
+                sender.sendMessage(kickFail);
             }
         }
         return true;

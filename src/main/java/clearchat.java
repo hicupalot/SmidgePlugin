@@ -1,3 +1,4 @@
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -21,7 +22,8 @@ public class clearchat implements CommandExecutor {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!player.hasPermission("smidge.staff") || Config.streamMode.containsKey(player.getUniqueId())) {
                 for (int i = 0; i<200; i++){
-                    player.sendMessage("");
+                    Component emptyMessage = Component.text("");
+                    player.sendMessage(emptyMessage);
                 }
             }
 
