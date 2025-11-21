@@ -11,6 +11,7 @@ public class ToggleStaffChat implements CommandExecutor {
     @SuppressWarnings("deprecated")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        String staffPrefix = ChatColor.translateAlternateColorCodes('&', "&e[&cSTAFFCHAT&e]");
         if (!(sender instanceof Player)) {
             sender.sendMessage(Config.notPlayer);
             return false;
@@ -47,7 +48,7 @@ public class ToggleStaffChat implements CommandExecutor {
         return true;
         }
         String name = ChatColor.translateAlternateColorCodes('&', "&6"+((Player) sender).getDisplayName());
-        String message = Config.staffPrefix + " "
+        String message = staffPrefix + " "
                 + name + ": ";
         for (String s : args) {
             message = message + ChatColor.GREEN+s + " ";
