@@ -53,7 +53,11 @@ public class ToggleAdminChat implements CommandExecutor {
                 message = message + ChatColor.GOLD+s + " ";
             }
                 String colorMessage = ChatColor.translateAlternateColorCodes('&', message);
-                Bukkit.broadcast(colorMessage, "smidge.admin");
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.hasPermission("smidge.admin")) {
+                player.sendMessage(colorMessage);
+            }
+        }
                 return true;
         }
     }
